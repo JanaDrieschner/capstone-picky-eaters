@@ -4,7 +4,7 @@ import ButtonRandomRecipes from "../components/ButtonRandomRecipes";
 
 import RecipeListRandom from "../components/RecipeList";
 
-export default function Home() {
+export default function Home({ recipes }) {
   return (
     <main>
       <Heading>🔱Picky Eaters🔱</Heading>
