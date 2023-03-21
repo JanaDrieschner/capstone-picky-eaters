@@ -11,13 +11,13 @@ export default function RecipeListRandom({ recipes }) {
     fetcher
   );
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (error) return <p>failed to load</p>;
+  if (isLoading) return <p>loading...</p>;
 
   return (
-    <div>
+    <>
       {data.recipes.map((recipe) => (
-        <div key={recipe.id}>
+        <article key={recipe.id}>
           <Link href={`/recipes/${recipe.id}`}>
             <h2>{recipe.title}</h2>
           </Link>
@@ -28,8 +28,8 @@ export default function RecipeListRandom({ recipes }) {
             width={400}
             height={300}
           />
-        </div>
+        </article>
       ))}
-    </div>
+    </>
   );
 }
