@@ -1,3 +1,4 @@
+import { SWRConfig } from "swr";
 import Heading from "../components/Heading";
 
 import LinksHomepage from "../components/LinksHomepage";
