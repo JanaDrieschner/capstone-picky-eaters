@@ -6,7 +6,7 @@ export default function LinksHomepage() {
   return (
     <>
       <Link href="/recipes/">
-        <StyledLinkButton> Inspire Me</StyledLinkButton>
+        <button> Inspire Me</button>
       </Link>
 
       <Link href="/">
@@ -16,7 +16,7 @@ export default function LinksHomepage() {
   );
 }
 
-const StyledLinkButton = styled.a`
+/*const StyledLinkButton = styled.a`
   background-color: #e8eceb;
   border: 0.25em ridge black;
   border-radius: 2em;
@@ -24,4 +24,4 @@ const StyledLinkButton = styled.a`
   text-align: center;
 
   padding: 12px 8px;
-`;
+`;*/
