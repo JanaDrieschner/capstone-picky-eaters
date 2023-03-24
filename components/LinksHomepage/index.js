@@ -16,7 +16,7 @@ export default function LinksHomepage() {
   );
 }
 
-/*const StyledLinkButton = styled.a`
+/*const StyledLinkButton = styled.(Link)`
   background-color: #e8eceb;
   border: 0.25em ridge black;
   border-radius: 2em;
