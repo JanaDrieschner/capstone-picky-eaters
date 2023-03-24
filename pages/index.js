@@ -1,4 +1,6 @@
 import Heading from "../components/Heading";
+import Navigation from "../components/Navigation";
+import Link from "next/link";
 
 import LinksHomepage from "../components/LinksHomepage";
 
