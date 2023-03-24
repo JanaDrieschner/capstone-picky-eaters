@@ -3,11 +3,12 @@ import Link from "next/link";
 import useSWR from "swr";
 import Image from "next/image";
 import styled from "styled-components";
+import Heading from "../Heading";
 
 function RefreshButton({ onRefetch }) {
   return (
     <button type="button" onClick={onRefetch}>
-      New Ideas
+      I am picky
     </button>
   );
 }
@@ -22,8 +23,9 @@ export default function RecipeListRandom({ recipes }) {
 
   return (
     <>
+      <Heading>New Ideas</Heading>
       <StyledButton>
-        <RefreshButton onRefetch={() => mutate()}>New Ideas</RefreshButton>
+        <RefreshButton onRefetch={() => mutate()}>I am picky</RefreshButton>
       </StyledButton>
       {data &&
         data.recipes &&
