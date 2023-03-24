@@ -25,19 +25,21 @@ export default function RecipeListRandom({ recipes }) {
       <StyledButton>
         <RefreshButton onRefetch={() => mutate()}>New Ideas</RefreshButton>
       </StyledButton>
-      {data.recipes.map((recipe) => (
-        <article key={recipe.id}>
-          <Link href={`/recipes/${recipe.id}`}>
-            <h2>{recipe.title}</h2>
-          </Link>
-          <Image
-            src={recipe.image}
-            alt={recipe.title}
-            width={400}
-            height={300}
-          />
-        </article>
-      ))}
+      {data &&
+        data.recipes &&
+        data.recipes.map((recipe) => (
+          <article key={recipe.id}>
+            <Link href={`/recipes/${recipe.id}`}>
+              <h2>{recipe.title}</h2>
+            </Link>
+            <Image
+              src={recipe.image}
+              alt={recipe.title}
+              width={400}
+              height={300}
+            />
+          </article>
+        ))}
     </>
   );
 }
