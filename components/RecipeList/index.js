@@ -12,12 +12,9 @@ function RefreshButton({ onRefetch }) {
   );
 }
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
 export default function RecipeListRandom({ recipes }) {
   const { data, error, isLoading, mutate } = useSWR(
-    "https://api.spoonacular.com/recipes/random?number=20&apiKey=32464ab8841f4c0cb8f3b724eb191b0f",
-    fetcher
+    "https://api.spoonacular.com/recipes/random?number=20&apiKey=32464ab8841f4c0cb8f3b724eb191b0f"
   );
 
   if (error) return <p>failed to load</p>;

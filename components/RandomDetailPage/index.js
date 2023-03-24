@@ -14,6 +14,11 @@ export default function RandomDetailPage({ recipe }) {
     extendedIngredients,
   } = recipe;
 
+  const filteredInstructions = instructions.replace(
+    /<\/?([a-z][a-z0-9]*)\b[^>]*>|<!--[\s\S]*?-->/gi,
+    ""
+  );
+
   return (
     <>
       <article>
@@ -31,9 +36,7 @@ export default function RandomDetailPage({ recipe }) {
           ))}
         </ul>
         <h3>Cooking Steps:</h3>
-        <ol>
-          <li> {instructions}</li>
-        </ol>
+        <p> {filteredInstructions}</p>
       </article>
     </>
   );
