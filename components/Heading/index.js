@@ -12,9 +12,10 @@ const Heading = styled.h1`
   height: 80px;
   background-color: #ecf2e4;
   color: #708a81;
-  border: 3px groove #86887b;
+
+  margin: 0;
 `;
 
 export default Heading;
 
-// color: #8db9aa;
+// color: #8db9aa; color: #708a81;

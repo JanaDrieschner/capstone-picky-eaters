@@ -35,7 +35,7 @@ const StyledFooter = styled.footer`
   background-color: #ecf2e4;
   color: white;
   text-align: center;
-  border: 3px solid black;
+  border: 3px groove #86887b;
 `;
 
 const StyledList = styled.ul`

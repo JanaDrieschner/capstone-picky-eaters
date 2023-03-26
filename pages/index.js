@@ -8,7 +8,7 @@ import LinksHomepage from "../components/LinksHomepage";
 export default function Home() {
   return (
     <>
-      <Heading>🔱Picky Eaters🔱</Heading>
+      <Heading>Picky Eaters</Heading>
       <main>
         <LinksHomepage />
       </main>
