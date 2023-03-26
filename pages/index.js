@@ -7,10 +7,11 @@ import LinksHomepage from "../components/LinksHomepage";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Heading>🔱Picky Eaters🔱</Heading>
-
-      <LinksHomepage />
-    </main>
+      <main>
+        <LinksHomepage />
+      </main>
+    </>
   );
 }

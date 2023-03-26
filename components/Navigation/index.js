@@ -32,7 +32,7 @@ const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
   height: 80px;
-  background-color: white;
+  background-color: #ecf2e4;
   color: white;
   text-align: center;
   border: 3px solid black;
