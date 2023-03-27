@@ -24,28 +24,74 @@ export default function RecipeListRandom({ recipes }) {
   return (
     <>
       <Heading>New Ideas</Heading>
-      <StyledButton>
+
+      <StyledContainer>
+        {data &&
+          data.recipes &&
+          data.recipes.map((recipe) => (
+            <StyledArticle key={recipe.id}>
+              <StyledImage
+                src={recipe.image}
+                alt={recipe.title}
+                width={120}
+                height={100}
+              />
+
+              <Link href={`/recipes/${recipe.id}`}>
+                <StyledTitle>{recipe.title}</StyledTitle>
+              </Link>
+            </StyledArticle>
+          ))}
+      </StyledContainer>
+
+      <StyledSection>
         <RefreshButton onRefetch={() => mutate()}>I am picky</RefreshButton>
-      </StyledButton>
-      {data &&
-        data.recipes &&
-        data.recipes.map((recipe) => (
-          <article key={recipe.id}>
-            <Link href={`/recipes/${recipe.id}`}>
-              <h2>{recipe.title}</h2>
-            </Link>
-            <Image
-              src={recipe.image}
-              alt={recipe.title}
-              width={400}
-              height={300}
-            />
-          </article>
-        ))}
+      </StyledSection>
     </>
   );
 }
 
-const StyledButton = styled.button`
-  background-color: red;
+const StyledContainer = styled.div`
+  display: flex;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
+const StyledArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 7px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px rgba (0, 0, 0, 0.4);
+  background-color: #fff;
+  &:hover {
+    background-color:#8db9aa;
+    box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
+    color: #86887b;
+    transform: translateY(-7px);
+`;
+
+const StyledTitle = styled.h2`
+  margin-top: 8px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  word-wrap: break-word;
+
+  color: black;
+`;
+
+const StyledImage = styled(Image)`
+  border-radius: 20%;
+  padding: 10px;
+`;
+
+const StyledSection = styled.section`
+  padding: 80px;
 `;

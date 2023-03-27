@@ -14,7 +14,7 @@ jest.mock("next/router", () => ({
 test("test", () => {
   render(<Home />);
   const element = screen.getByRole("heading", {
-    name: /🔱Picky Eaters🔱/,
+    name: /Picky Eaters/,
   });
   expect(element).toBeInTheDocument();
 });

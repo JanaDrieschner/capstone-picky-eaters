@@ -32,10 +32,10 @@ const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
   height: 80px;
-  background-color: white;
+  background-color: #ecf2e4;
   color: white;
   text-align: center;
-  border: 3px solid black;
+  border: 3px groove #86887b;
 `;
 
 const StyledList = styled.ul`
@@ -48,6 +48,3 @@ const StyledLink = styled(Link)`
   font-size: 30px;
   pading: 10px 25px;
 `;
-
-/*togglelogik
-svgs*/

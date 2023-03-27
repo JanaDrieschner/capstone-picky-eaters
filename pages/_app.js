@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import Head from "next/head";
 import { SWRConfig } from "swr";
 import Navigation from "../components/Navigation";
+import Heading from "../components/Heading";
 
 export default function App({ Component, pageProps }) {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -9,11 +10,11 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Head>
-        <title>Capstone Project</title>
-      </Head>
+      <Heading />
+
       <SWRConfig value={{ fetcher }}>
         <Component {...pageProps} />
+
         <Navigation />
       </SWRConfig>
     </>
