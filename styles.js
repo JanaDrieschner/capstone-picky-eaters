@@ -13,5 +13,3 @@ export default createGlobalStyle`
    
   }
 `;
-
-//e3dcd2 #f9f7f0;

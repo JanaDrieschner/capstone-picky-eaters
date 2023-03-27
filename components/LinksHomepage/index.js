@@ -42,5 +42,3 @@ text-decoration: none;
     transform: translateY(-7px);
   }
 `;
-
-//#dd8e58;

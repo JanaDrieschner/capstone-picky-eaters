@@ -17,5 +17,3 @@ const Heading = styled.h1`
 `;
 
 export default Heading;
-
-// color: #8db9aa; color: #708a81;

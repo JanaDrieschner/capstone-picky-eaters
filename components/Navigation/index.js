@@ -48,6 +48,3 @@ const StyledLink = styled(Link)`
   font-size: 30px;
   pading: 10px 25px;
 `;
-
-/*togglelogik
-svgs*/
