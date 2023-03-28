@@ -1,4 +1,5 @@
 import RecipeList from "../../components/RecipeList";
+import RecipeForm from "../../components/RecipeForm";
 
 export default function Recipes({ id }) {
   async function handleCreateRecipe(event) {
@@ -22,5 +23,10 @@ export default function Recipes({ id }) {
     }
   }
 
-  return <RecipeList recipe={id} />;
+  return (
+    <>
+      <RecipeForm onSubmit={handleCreateRecipe} value="" />
+      <RecipeList recipe={id} />;
+    </>
+  );
 }
