@@ -1,5 +1,6 @@
 import dbConnect from "../../../db/connect";
 import Recipe from "../../../db/models/Recipe";
+import mongoose from "mongoose";
 
 export default async function handler(request, response) {
   await dbConnect();
