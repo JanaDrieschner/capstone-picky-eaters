@@ -5,14 +5,14 @@ export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const recipes = await Favorite.find();
+    const recipes = await Recipe.find();
     return response.status(200).json(recipes);
   }
 
   if (request.method === "POST") {
     try {
       const recipeData = request.body;
-      const recipe = new Favorite(favorite.data);
+      const recipe = new Favorite(Recipe.data);
       await recipe.save();
 
       response.status(201).json({ status: "Favorite recipe created" });
