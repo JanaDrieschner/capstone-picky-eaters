@@ -1,5 +1,5 @@
 import dbConnect from "../../../db/connect";
-import Favorite from "../../../db/models/Favorite";
+import Recipe from "../../../db/models/Recipe";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -12,7 +12,7 @@ export default async function handler(request, response) {
   if (request.method === "POST") {
     try {
       const recipeData = request.body;
-      const recipe = new Favorite(favoriteData);
+      const recipe = new Favorite(favorite.data);
       await recipe.save();
 
       response.status(201).json({ status: "Favorite recipe created" });
