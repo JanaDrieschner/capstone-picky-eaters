@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { BiHomeAlt2 } from "react-icons/Bi";
+import { BiHomeAlt2 } from "react-icons/bi";
 
 import Image from "next/image";
 
