@@ -33,8 +33,8 @@ export default function RecipeListRandom({ recipes }) {
               <StyledImage
                 src={recipe.image}
                 alt={recipe.title}
-                width={120}
-                height={100}
+                width={150}
+                height={130}
               />
 
               <Link href={`/recipes/${recipe.id}`}>
@@ -64,11 +64,13 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
-  width: calc(33.33% - 20px);
+  width: 70%;
+  margin-left: 10px;
+
   box-sizing: border-box;
-  margin-bottom: 7px;
+  margin-bottom: 7px;;
   border-radius: 20px;
-  box-shadow: 0 0 4px rgba (0, 0, 0, 0.4);
+  box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
   background-color: #fff;
   &:hover {
     background-color:#8db9aa;
@@ -89,7 +91,7 @@ const StyledTitle = styled.h2`
 
 const StyledImage = styled(Image)`
   border-radius: 20%;
-  padding: 10px;
+  padding: 15px;
 `;
 
 const StyledSection = styled.section`
