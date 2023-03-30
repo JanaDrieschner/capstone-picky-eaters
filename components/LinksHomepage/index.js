@@ -24,10 +24,11 @@ const StyledLink = styled(Link)`
 
 text-decoration: none;
   padding 1.3em 3em;
-  font-size: 30px;
+  white-space: nowrap;
   margin: 10px;
   text-transform: uppercase;
   font-weight: 500;
+  
   color: #F4F5F6;
   background-color:  #0F5C64;     
   border: 1px ridge #BDC0BF;

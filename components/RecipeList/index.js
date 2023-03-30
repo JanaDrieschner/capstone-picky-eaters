@@ -7,9 +7,9 @@ import Heading from "../Heading";
 
 function RefreshButton({ onRefetch }) {
   return (
-    <button type="button" onClick={onRefetch}>
+    <StyledButton type="button" onClick={onRefetch}>
       I am picky
-    </button>
+    </StyledButton>
   );
 }
 
@@ -20,6 +20,7 @@ export default function RecipeListRandom({ recipes }) {
 
   if (error) return <p>failed to load</p>;
   if (isLoading) return <p>loading...</p>;
+  if (!recipes.image) return <p>Image is not available</p>;
 
   return (
     <>
@@ -42,11 +43,9 @@ export default function RecipeListRandom({ recipes }) {
               </Link>
             </StyledArticle>
           ))}
-      </StyledContainer>
 
-      <StyledSection>
         <RefreshButton onRefetch={() => mutate()}>I am picky</RefreshButton>
-      </StyledSection>
+      </StyledContainer>
     </>
   );
 }
@@ -55,7 +54,6 @@ const StyledContainer = styled.div`
   display: flex;
   padding-top: 80px;
   padding-bottom: 80px;
-
   justify-content: space-between;
   flex-direction: column;
 `;
@@ -63,17 +61,16 @@ const StyledContainer = styled.div`
 const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc;
+  border: 1px solid #BDC0BF;
   width: 70%;
   margin-left: 10px;
-
   box-sizing: border-box;
   margin-bottom: 7px;;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
-  background-color: #fff;
+  background-color: #0F4F5F6;
   &:hover {
-    background-color:#8db9aa;
+    background-color:#8DB9AA;
     box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
     color: #86887b;
     transform: translateY(-7px);
@@ -85,15 +82,36 @@ const StyledTitle = styled.h2`
   text-align: center;
   text-decoration: none;
   word-wrap: break-word;
-
-  color: black;
+  color: #0f5c64;
 `;
 
 const StyledImage = styled(Image)`
   border-radius: 20%;
   padding: 15px;
+  box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
 `;
 
-const StyledSection = styled.section`
-  padding: 80px;
+const StyledButton = styled.button`
+text-decoration: none;
+padding 1.3em 3em;
+white-space: nowrap;
+margin: 10px;
+text-transform: uppercase;
+font-size: 15px;
+font-weight: 500;
+color: #F4F5F6;
+background-color: #0F5C64;
+border: 1px ridge #BDC0BF;
+border-radius: 45px;
+box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
+transition: all 0.3s ease 0s;
+&:hover {
+  background-color: #0f5c64;
+  box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
+  color: #86887b;
+  transform: translateY(-7px);
+
+}
+
+  
 `;

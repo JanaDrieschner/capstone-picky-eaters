@@ -31,7 +31,7 @@ export default function RandomDetailPage({ recipe }) {
           height={150}
         />
 
-        <h2>{recipe.title}</h2>
+        <h3>{recipe.title}</h3>
 
         <p>Ready in {readyInMinutes} minutes</p>
         <p> Servings: {servings}</p>
@@ -59,6 +59,7 @@ const StyledArticle = styled.article`
   padding: 16px;
   margin-top: 40%;
   margin-bottom: 20%;
+  color: #0d0e0b;
 `;
 
 const StyledImage = styled(Image)`
@@ -66,6 +67,7 @@ const StyledImage = styled(Image)`
 
   border: 1px ridge black;
   width: 100%;
+
   position: absolute;
   top: 0;
   left: 0;
