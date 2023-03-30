@@ -9,7 +9,8 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: system-ui;
-    background-color:#ecf2e4;
+    background-color:#f4f5f6;
+    font-family: "Nunito", sans-serif;
    
   }
 `;

@@ -6,7 +6,6 @@ export default function LinksHomepage() {
   return (
     <>
       <StyledWrapper>
-        <StyledLink href="/"> URL</StyledLink>
         <StyledLink href="/recipes/">Inspire Me</StyledLink>
       </StyledWrapper>
     </>
@@ -25,18 +24,19 @@ const StyledLink = styled(Link)`
 
 text-decoration: none;
   padding 1.3em 3em;
-  font-size: 30px;
+  white-space: nowrap;
   margin: 10px;
   text-transform: uppercase;
   font-weight: 500;
-  color: #708a81;
-  background-color: #c0dcc3;
-  border: none;
+  
+  color: #F4F5F6;
+  background-color:  #0F5C64;     
+  border: 1px ridge #BDC0BF;
   border-radius: 45px;
   box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
   &:hover {
-    background-color:#8db9aa;
+    background-color: #0f5c64;
     box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
     color: #86887b;
     transform: translateY(-7px);
