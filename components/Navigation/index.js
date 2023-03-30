@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { FaHome } from "react-icons/fa";
-import { GrFavorite } from "react-icons/gr";
+import { BiHomeAlt2 } from "react-icons/Bi";
+
 import Image from "next/image";
 
 export default function Navigation({ children }) {
@@ -12,7 +12,7 @@ export default function Navigation({ children }) {
       <StyledList>
         <li>
           <StyledLink href="/">
-            <FaHome />
+            <BiHomeAlt2 />
           </StyledLink>
         </li>
       </StyledList>
