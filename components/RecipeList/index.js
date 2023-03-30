@@ -20,7 +20,6 @@ export default function RecipeListRandom({ recipes }) {
 
   if (error) return <p>failed to load</p>;
   if (isLoading) return <p>loading...</p>;
-  if (!recipes.image) return <p>Image is not available</p>;
 
   return (
     <>
