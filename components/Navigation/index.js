@@ -15,12 +15,6 @@ export default function Navigation({ children }) {
             <FaHome />
           </StyledLink>
         </li>
-        <li>
-          <StyledLink href="/favorites">
-            {" "}
-            <GrFavorite />
-          </StyledLink>
-        </li>
       </StyledList>
     </StyledFooter>
   );
@@ -32,7 +26,7 @@ const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
   height: 80px;
-  background-color: #ecf2e4;
+  background-color: #f4f5f6;
   color: white;
   text-align: center;
   border: 3px groove #86887b;

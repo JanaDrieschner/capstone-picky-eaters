@@ -10,8 +10,8 @@ const Heading = styled.h1`
   top: 0;
   width: 100%;
   height: 80px;
-  background-color: #ecf2e4;
-  color: #708a81;
+  background-color: #f4f5f6;
+  color: #0f5c64;
 
   margin: 0;
 `;
