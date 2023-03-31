@@ -1,28 +1,42 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { HiLink } from "react-icons/hi";
+
 import { useRouter } from "next/router";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function LinksHomepage() {
+  const [recipes, setRecipes] = useState([]);
+
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
   const router = useRouter();
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "link") {
-      setLink(value);
-    } else if (name === "title") {
-      setTitle(value);
+  useEffect(() => {
+    const storedRecipes = JSON.parse(localStorage.getItem("recipes"));
+    if (storedRecipes) {
+      setRecipes(storedRecipes);
     }
-  };
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    router.push("/links");
+
+    const newRecipe = { title, link };
+    setRecipes([...recipes, newRecipe]);
+    localStorage.setItem("recipes", JSON.stringify([...recipes, newRecipe]));
+    setLink("");
+    setTitle("");
+    router.push("/myrecipes");
+  };
+
+  const handleLinkChange = (event) => {
+    setLink(event.target.value);
+  };
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
   };
 
   return (
@@ -30,7 +44,7 @@ export default function LinksHomepage() {
       <StyledWrapper>
         <StyledForm onSubmit={handleSubmit}>
           <StyledTitle>
-            <p>My Recipes</p>
+            <p>Add Recipe</p>
           </StyledTitle>
           <label htmlFor="link">Link</label>
           <br />
@@ -38,9 +52,9 @@ export default function LinksHomepage() {
             type="text"
             name="link"
             value={link}
-            onChange={handleChange}
-          />{" "}
-          <StyledButton type="submit">Safe</StyledButton>
+            onChange={handleLinkChange}
+          />
+          <StyledButton type="submit">Save Recipe</StyledButton>
           <br /> <br />
           <label htmlFor="title">Title</label>
           <br />
@@ -48,7 +62,7 @@ export default function LinksHomepage() {
             type="text"
             name="title"
             value={title}
-            onChange={handleChange}
+            onChange={handleTitleChange}
           />
         </StyledForm>
 
