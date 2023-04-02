@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { BiHomeAlt2 } from "react-icons/bi";
+import { MdOutlineFoodBank } from "react-icons/md";
 
 import Image from "next/image";
 
@@ -13,6 +14,11 @@ export default function Navigation({ children }) {
         <li>
           <StyledLink href="/">
             <BiHomeAlt2 />
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink href="/myrecipes">
+            <MdOutlineFoodBank />
           </StyledLink>
         </li>
       </StyledList>
