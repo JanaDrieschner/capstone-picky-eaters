@@ -53,6 +53,7 @@ export default function LinksHomepage() {
             name="link"
             value={link}
             onChange={handleLinkChange}
+            required
           />
           <StyledButton type="submit">Save Recipe</StyledButton>
           <br /> <br />
