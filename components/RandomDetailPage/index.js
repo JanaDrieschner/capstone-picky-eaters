@@ -3,6 +3,7 @@ import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import { GrAddCircle } from "react-icons/gr";
 
 export default function RandomDetailPage({ recipe }) {
   const {
@@ -30,6 +31,10 @@ export default function RandomDetailPage({ recipe }) {
           width={200}
           height={150}
         />
+
+        <Link href="/myrecipes">
+          <GrAddCircle />
+        </Link>
 
         <h3>{recipe.title}</h3>
 

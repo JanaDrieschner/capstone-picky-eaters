@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 import { useRouter } from "next/router";
 
@@ -8,7 +9,6 @@ import { useState, useEffect } from "react";
 
 export default function LinksHomepage() {
   const [recipes, setRecipes] = useState([]);
-
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
   const router = useRouter();
@@ -24,8 +24,10 @@ export default function LinksHomepage() {
     event.preventDefault();
 
     const newRecipe = { title, link };
-    setRecipes([...recipes, newRecipe]);
-    localStorage.setItem("recipes", JSON.stringify([...recipes, newRecipe]));
+    const updatedRecipes = [...recipes, newRecipe];
+
+    setRecipes(updatedRecipes);
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setLink("");
     setTitle("");
     router.push("/myrecipes");
@@ -55,7 +57,6 @@ export default function LinksHomepage() {
             onChange={handleLinkChange}
             required
           />
-          <StyledButton type="submit">Save Recipe</StyledButton>
           <br /> <br />
           <label htmlFor="title">Title</label>
           <br />
@@ -65,6 +66,11 @@ export default function LinksHomepage() {
             value={title}
             onChange={handleTitleChange}
           />
+          <StyledButton type="submit">
+            <StyledIcon>
+              <IoIosAddCircleOutline />
+            </StyledIcon>
+          </StyledButton>
         </StyledForm>
 
         <StyledLink href="/recipes/">Inspire Me</StyledLink>
@@ -87,7 +93,7 @@ const StyledForm = styled.form`
 text-decoration: none;
   padding 1.3em 3em;
   white-space: nowrap;
-  margin: 7px;
+  margin: 3px;
   text-transform: uppercase;
   font-weight: 500;
   
@@ -107,10 +113,16 @@ text-decoration: none;
 
 `;
 const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  padding-left: 100px;
+
   border-radius: 20px;
-  background-color: #f4f5f5;
+  background-color: #0f5c64;
   color: #0f5c64;
-  border: 1px solid #bdc0bf;
+  border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
   width: 30%;
@@ -144,4 +156,13 @@ text-decoration: none;
   }
 
 
+`;
+
+const StyledIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 30px;
+  color: #f4f5f6;
 `;
