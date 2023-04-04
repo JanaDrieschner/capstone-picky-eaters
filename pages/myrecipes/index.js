@@ -18,7 +18,9 @@ export default function OwnRecipes() {
   }, []);
 
   const openLinkInNewTab = (link) => {
-    window.open(link, "_blank");
+    if (typeof window !== "undefined") {
+      window.open(link, "_blank");
+    }
   };
 
   const handleRecipeClick = (recipe) => {
@@ -42,10 +44,10 @@ export default function OwnRecipes() {
               <StyledButton onClick={() => handleRecipeClick(recipe)}>
                 {recipe.title}
               </StyledButton>
-              <StyledDeleteButton onClick={handleDeleteRecipe}>
+              <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
                 <AiOutlineDelete />
               </StyledDeleteButton>
-              <StyledLink href="//">
+              <StyledLink href={`/recipes/${recipe.id}`}>
                 <BsArrowRightCircle />
               </StyledLink>
             </StyledSection>
@@ -110,10 +112,6 @@ const StyledDeleteButton = styled.button`
   width: 25px;
   height: 25px;
   border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #ff6961;
-  }
 `;
 
 const StyledLink = styled(Link)`

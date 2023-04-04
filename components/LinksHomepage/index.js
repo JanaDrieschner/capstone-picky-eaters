@@ -66,7 +66,7 @@ export default function LinksHomepage() {
             value={title}
             onChange={handleTitleChange}
             required
-            maxlength="30"
+            maxLength="30"
           />
           <StyledButton type="submit">
             <StyledIcon>

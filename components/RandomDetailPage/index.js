@@ -42,10 +42,16 @@ export default function RandomDetailPage({ recipe }) {
           width={190}
           height={170}
         />
+        <Link href="/myrecipes">
+          <StyledIcon>
+            <IoIosAddCircleOutline onClick={handleSaveRecipe} />
+          </StyledIcon>
+        </Link>
 
         <h3>{recipe.title}</h3>
 
         <p>Ready in {readyInMinutes} minutes</p>
+
         <p> Servings: {servings}</p>
 
         <h3>Ingredients</h3>
@@ -56,11 +62,6 @@ export default function RandomDetailPage({ recipe }) {
         </ul>
         <h3>Cooking Steps:</h3>
         <p> {filteredInstructions}</p>
-        <Link href="/myrecipes">
-          <StyledIcon>
-            <IoIosAddCircleOutline onClick={handleSaveRecipe} />
-          </StyledIcon>
-        </Link>
       </StyledArticle>
     </>
   );
