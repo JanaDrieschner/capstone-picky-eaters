@@ -3,7 +3,8 @@ import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import { GrAddCircle } from "react-icons/gr";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { useRouter } from "next/router";
 
 export default function RandomDetailPage({ recipe }) {
   const {
@@ -21,6 +22,16 @@ export default function RandomDetailPage({ recipe }) {
     ""
   );
 
+  const router = useRouter();
+
+  const handleSaveRecipe = () => {
+    const storedRecipes = localStorage.getItem("recipes");
+    const newRecipes = storedRecipes ? JSON.parse(storedRecipes) : [];
+    newRecipes.push(recipe);
+    localStorage.setItem("recipes", JSON.stringify(newRecipes));
+    router.push("/myrecipes");
+  };
+
   return (
     <>
       <StyledHeader />
@@ -28,13 +39,9 @@ export default function RandomDetailPage({ recipe }) {
         <StyledImage
           src={recipe.image}
           alt={recipe.title}
-          width={200}
-          height={150}
+          width={190}
+          height={170}
         />
-
-        <Link href="/myrecipes">
-          <GrAddCircle />
-        </Link>
 
         <h3>{recipe.title}</h3>
 
@@ -49,6 +56,11 @@ export default function RandomDetailPage({ recipe }) {
         </ul>
         <h3>Cooking Steps:</h3>
         <p> {filteredInstructions}</p>
+        <Link href="/myrecipes">
+          <StyledIcon>
+            <IoIosAddCircleOutline onClick={handleSaveRecipe} />
+          </StyledIcon>
+        </Link>
       </StyledArticle>
     </>
   );
@@ -77,4 +89,12 @@ const StyledImage = styled(Image)`
   top: 0;
   left: 0;
   z-index: 0;
+`;
+
+const StyledIcon = styled.div`
+  font-size: 40px;
+
+  color: #0f5c64;
+  display: flex;
+  justify-content: flex-end;
 `;

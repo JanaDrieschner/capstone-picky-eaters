@@ -65,6 +65,8 @@ export default function LinksHomepage() {
             name="title"
             value={title}
             onChange={handleTitleChange}
+            required
+            maxlength="30"
           />
           <StyledButton type="submit">
             <StyledIcon>
@@ -93,7 +95,7 @@ const StyledForm = styled.form`
 text-decoration: none;
   padding 1.3em 3em;
   white-space: nowrap;
-  margin: 3px;
+  margin: 7px;
   text-transform: uppercase;
   font-weight: 500;
   
