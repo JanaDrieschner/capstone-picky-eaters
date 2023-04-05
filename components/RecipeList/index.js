@@ -39,7 +39,7 @@ export default function RecipeListRandom({ recipes }) {
                 />
               ) : (
                 <StyledImagePlaceholder>
-                  Image not available
+                  Image is not available
                 </StyledImagePlaceholder>
               )}
 
