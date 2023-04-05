@@ -83,7 +83,7 @@ const StyledArticle = styled.article`
 const StyledImage = styled(Image)`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  border: 1px ridge black;
+  border: 2px ridge black;
   width: 100%;
 
   position: absolute;
@@ -94,8 +94,10 @@ const StyledImage = styled(Image)`
 
 const StyledIcon = styled.div`
   font-size: 40px;
-
+  
   color: #0f5c64;
+
+  color: 
   display: flex;
   justify-content: flex-end;
 `;

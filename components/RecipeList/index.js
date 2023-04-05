@@ -30,12 +30,18 @@ export default function RecipeListRandom({ recipes }) {
           data.recipes &&
           data.recipes.map((recipe) => (
             <StyledArticle key={recipe.id}>
-              <StyledImage
-                src={recipe.image}
-                alt={recipe.title}
-                width={150}
-                height={130}
-              />
+              {recipe.image ? (
+                <StyledImage
+                  src={recipe.image}
+                  alt={recipe.title}
+                  width={150}
+                  height={130}
+                />
+              ) : (
+                <StyledImagePlaceholder>
+                  Image not available
+                </StyledImagePlaceholder>
+              )}
 
               <Link href={`/recipes/${recipe.id}`}>
                 <StyledTitle>{recipe.title}</StyledTitle>
@@ -67,7 +73,7 @@ const StyledArticle = styled.article`
   margin-bottom: 7px;;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
-  background-color: #0F4F5F6;
+  background-color: #0f5c64;
   &:hover {
     background-color:#8DB9AA;
     box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
@@ -81,7 +87,9 @@ const StyledTitle = styled.h2`
   text-align: center;
   text-decoration: none;
   word-wrap: break-word;
-  color: #0f5c64;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
 `;
 
 const StyledImage = styled(Image)`
@@ -113,4 +121,11 @@ transition: all 0.3s ease 0s;
 }
 
   
+`;
+
+const StyledImagePlaceholder = styled.div`
+  color: #f4f5f6;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  word-wrap: break-word;
 `;
