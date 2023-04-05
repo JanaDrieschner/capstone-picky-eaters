@@ -3,14 +3,14 @@ async function handler(req, res) {
     const baseUrl = "https://api.spoonacular.com";
     const path = req.query.slug.reduce((acc, cur) => acc + "/" + cur, "");
     const { slug, ...query } = req.query;
-    const url =
-      baseUrl +
-      path +
-      "?" +
-      new URLSearchParams({
-        apiKey: process.env.API_KEY,
-        ...query,
-      }).toString();
+    console.log("slug", slug);
+    console.log("query", query);
+    const queryString = new URLSearchParams({
+      apiKey: process.env.API_KEY,
+      ...query,
+    }).toString();
+    console.log(queryString);
+    const url = baseUrl + path + "?" + queryString;
     console.log(url);
     const response = await fetch(url);
     if (response.ok) {
