@@ -75,7 +75,9 @@ const StyledArticle = styled.article`
   box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
   background-color: #0f5c64;
   &:hover {
-    background-color:#8DB9AA;
+    background-color:#e7eeef;
+    
+    
     box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
     color: #86887b;
     transform: translateY(-7px);

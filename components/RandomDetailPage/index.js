@@ -94,10 +94,10 @@ const StyledImage = styled(Image)`
 
 const StyledIcon = styled.div`
   font-size: 40px;
-  
+  display: flex;
+  align-items: flex-end;
+
   color: #0f5c64;
 
-  color: 
-  display: flex;
-  justify-content: flex-end;
+  color: ;
 `;
