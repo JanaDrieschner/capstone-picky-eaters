@@ -2,7 +2,18 @@ import styled from "styled-components";
 import ReactPlayer from "react-player";
 import Heading from "../Heading";
 
+import { useState } from "react";
+
 export default function OwnRecipeDetails() {
+  const [note, setNote] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  const handleChange = (event) => {
+    setNote(event.target.value);
+  };
   return (
     <>
       <Heading>My Recipe</Heading>
@@ -12,8 +23,8 @@ export default function OwnRecipeDetails() {
           url="https://www.youtube.com/watch?v=_VPpFU3Jyq4"
         />
       </StyledPlayer>
-      <form>
-        <StyledTextarea />
+      <form onSubmit={handleSubmit}>
+        <StyledTextarea value={note} name="notes" onChange={handleChange} />
         <br /> <br />
         <StyledButton type="submit">safe</StyledButton>
       </form>
