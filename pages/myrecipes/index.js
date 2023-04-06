@@ -23,15 +23,19 @@ export default function OwnRecipes() {
     }
   };
 
-  const handleRecipeClick = (recipe) => {
-    openLinkInNewTab(recipe.link);
-  };
-
   const handleDeleteRecipe = (index) => {
     const newRecipes = [...recipes];
     newRecipes.splice(index, 1);
     setRecipes(newRecipes);
     localStorage.setItem("recipes", JSON.stringify(newRecipes));
+  };
+
+  const handleRecipeClick = (recipe) => {
+    if (recipe.link) {
+      openLinkInNewTab(recipe.link);
+    } else {
+      router.push(`/recipes/${recipe.id}`);
+    }
   };
 
   return (
@@ -42,12 +46,15 @@ export default function OwnRecipes() {
           recipes.map((recipe, index) => (
             <StyledSection key={index}>
               <StyledButton onClick={() => handleRecipeClick(recipe)}>
-                {recipe.title}
+                <a>{recipe.title}</a>
               </StyledButton>
               <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
                 <AiOutlineDelete />
               </StyledDeleteButton>
-              <StyledLink href={`/recipes/${recipe.id}`}>
+
+              <StyledLink
+                href={recipe.link ? recipe.link : `/recipes/${recipe.id}`}
+              >
                 <BsArrowRightCircle />
               </StyledLink>
             </StyledSection>
@@ -77,13 +84,7 @@ const StyledSection = styled.section`
   justify-content: center;
   position: relative;
   padding-right: 40px;
-  margin-bottom:6px;
-  
-  &:hover {
-    background-color:#8DB9AA;
-    box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
-    color: #86887b;
-    transform: translateY(-7px);
+  margin-bottom: 6px;
 `;
 
 const StyledButton = styled.button`
@@ -120,14 +121,9 @@ const StyledLink = styled(Link)`
   right: 10px;
   margin: 0;
   color: #f4f5f6;
-
   border-radius: 50%;
   font-size: 30px;
   width: 25px;
   height: 25px;
   border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #ff6961;
-  }
 `;
