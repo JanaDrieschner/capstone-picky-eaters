@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { IoIosAddCircleOutline } from "react-icons/io";
-
+import Toggle from "../Toggle";
 import { useRouter } from "next/router";
 
 import { useState, useEffect } from "react";
@@ -44,6 +44,7 @@ export default function LinksHomepage() {
   return (
     <>
       <StyledWrapper>
+        <Toggle />
         <StyledForm onSubmit={handleSubmit}>
           <StyledTitle>
             <p>Add Recipe</p>
