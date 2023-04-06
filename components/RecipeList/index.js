@@ -15,7 +15,7 @@ function RefreshButton({ onRefetch }) {
 
 export default function RecipeListRandom({ recipes }) {
   const { data, error, isLoading, mutate } = useSWR(
-    "https://api.spoonacular.com/recipes/random?number=20&apiKey=32464ab8841f4c0cb8f3b724eb191b0f"
+    `/api/spoonacular/recipes/random?number=20`
   );
 
   if (error) return <p>failed to load</p>;
@@ -30,12 +30,18 @@ export default function RecipeListRandom({ recipes }) {
           data.recipes &&
           data.recipes.map((recipe) => (
             <StyledArticle key={recipe.id}>
-              <StyledImage
-                src={recipe.image}
-                alt={recipe.title}
-                width={150}
-                height={130}
-              />
+              {recipe.image ? (
+                <StyledImage
+                  src={recipe.image}
+                  alt={recipe.title}
+                  width={150}
+                  height={130}
+                />
+              ) : (
+                <StyledImagePlaceholder>
+                  Image is not available
+                </StyledImagePlaceholder>
+              )}
 
               <Link href={`/recipes/${recipe.id}`}>
                 <StyledTitle>{recipe.title}</StyledTitle>
@@ -67,9 +73,11 @@ const StyledArticle = styled.article`
   margin-bottom: 7px;;
   border-radius: 20px;
   box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
-  background-color: #0F4F5F6;
+  background-color: #0f5c64;
   &:hover {
-    background-color:#8DB9AA;
+    background-color:#e7eeef;
+    
+    
     box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
     color: #86887b;
     transform: translateY(-7px);
@@ -81,7 +89,9 @@ const StyledTitle = styled.h2`
   text-align: center;
   text-decoration: none;
   word-wrap: break-word;
-  color: #0f5c64;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
 `;
 
 const StyledImage = styled(Image)`
@@ -113,4 +123,11 @@ transition: all 0.3s ease 0s;
 }
 
   
+`;
+
+const StyledImagePlaceholder = styled.div`
+  color: #f4f5f6;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  word-wrap: break-word;
 `;

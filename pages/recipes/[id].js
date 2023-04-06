@@ -8,7 +8,7 @@ export default function RandomDetails({ recipe }) {
   const { id } = router.query;
 
   const { data, error, isLoading } = useSWR(
-    `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=32464ab8841f4c0cb8f3b724eb191b0f`
+    `/api/spoonacular/recipes/${id}/information?includeNutrition=false`
   );
   console.log(data);
   if (error) return <p>failed to load</p>;

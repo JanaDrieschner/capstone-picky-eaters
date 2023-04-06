@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-
 import styled from "styled-components";
 import Heading from "../../components/Heading";
 import { AiOutlineDelete } from "react-icons/ai";
+import { BsArrowRightCircle } from "react-icons/bs";
+import Link from "next/link";
 
 export default function OwnRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -17,11 +18,9 @@ export default function OwnRecipes() {
   }, []);
 
   const openLinkInNewTab = (link) => {
-    window.open(link, "_blank");
-  };
-
-  const handleRecipeClick = (recipe) => {
-    openLinkInNewTab(recipe.link);
+    if (typeof window !== "undefined") {
+      window.open(link, "_blank");
+    }
   };
 
   const handleDeleteRecipe = (index) => {
@@ -31,30 +30,44 @@ export default function OwnRecipes() {
     localStorage.setItem("recipes", JSON.stringify(newRecipes));
   };
 
+  const handleRecipeClick = (recipe) => {
+    if (recipe.link) {
+      openLinkInNewTab(recipe.link);
+    } else {
+      router.push(`/recipes/${recipe.id}`);
+    }
+  };
+
   return (
     <>
       <Heading>My Recipes</Heading>
-      <StyledWrapper>
+      <StyledArticle>
         {recipes.length > 0 ? (
           recipes.map((recipe, index) => (
             <StyledSection key={index}>
               <StyledButton onClick={() => handleRecipeClick(recipe)}>
-                {recipe.title}
+                <a>{recipe.title}</a>
               </StyledButton>
-              <StyledDeleteButton onClick={handleDeleteRecipe}>
+              <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
                 <AiOutlineDelete />
               </StyledDeleteButton>
+
+              <StyledLink
+                href={recipe.link ? recipe.link : `/recipes/${recipe.id}`}
+              >
+                <BsArrowRightCircle />
+              </StyledLink>
             </StyledSection>
           ))
         ) : (
           <p>You have no saved recipes.</p>
         )}
-      </StyledWrapper>
+      </StyledArticle>
     </>
   );
 }
 
-const StyledWrapper = styled.div`
+const StyledArticle = styled.article`
   display: flex;
   padding-top: 80px;
   padding-bottom: 80px;
@@ -63,58 +76,54 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledSection = styled.section`
-
-display: flex;
-flex-direction: column;
-border: 1px solid #BDC0BF;
-width: 70%;
-margin-left: 10px;
-box-sizing: border-box;
-margin-bottom: 7px;;
-border-radius: 20px;
-box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
-background-color: #0F4F5F6;
-&:hover {
-  background-color:#8DB9AA;
-  box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
-  color: #86887b;
-  transform: translateY(-7px);
-
-
-
+  display: flex;
+  align-itens: center;
+  border: 3px ridge black;
+  background-color: #0f5c64;
+  border-radius: 20px;
+  justify-content: center;
+  position: relative;
+  padding-right: 40px;
+  margin-bottom: 6px;
 `;
 
 const StyledButton = styled.button`
-display: flex;
-  flex-direction: column;
-  border: 1px solid #BDC0BF;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 70%;
-  margin-left: 10px;
-  box-sizing: border-box;
-  margin-bottom: 7px;;
-  border-radius: 20px;
+  height: 80px;
   box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
-  background-color: #0F4F5F6;
-  &:hover {
-    background-color:#8DB9AA;
-    box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
-    color: #86887b;
-    transform: translateY(-7px);
-
+  color: #f4f5f6;
+  text-transform: uppercase;
 `;
 
 const StyledDeleteButton = styled.button`
-  display: inline-block;
-  margin-left: 10px;
-  background-color: #0f5c64;
-  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  color: #c35e64;
+  background-color: transparent;
+
   border-radius: 50%;
-  font-size: 15px;
+  font-size: 30px;
   width: 25px;
   height: 25px;
   border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #ff6961;
-  }
+`;
+
+const StyledLink = styled(Link)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 0;
+  color: #f4f5f6;
+  border-radius: 50%;
+  font-size: 30px;
+  width: 25px;
+  height: 25px;
+  border: none;
 `;
