@@ -2,23 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import Toggle from "../Toggle";
+import useLocalStorageState from "use-local-storage-state";
 import { useRouter } from "next/router";
 
 import { useState, useEffect } from "react";
 
 export default function LinksHomepage() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useLocalStorageState("recipes", []);
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
   const router = useRouter();
-
-  useEffect(() => {
-    const storedRecipes = JSON.parse(localStorage.getItem("recipes"));
-    if (storedRecipes) {
-      setRecipes(storedRecipes);
-    }
-  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +20,7 @@ export default function LinksHomepage() {
     const updatedRecipes = [...recipes, newRecipe];
 
     setRecipes(updatedRecipes);
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+
     setLink("");
     setTitle("");
     router.push("/myrecipes");
@@ -44,7 +37,6 @@ export default function LinksHomepage() {
   return (
     <>
       <StyledWrapper>
-        <Toggle />
         <StyledForm onSubmit={handleSubmit}>
           <StyledTitle>
             <p>Add Recipe</p>

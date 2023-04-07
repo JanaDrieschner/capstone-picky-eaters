@@ -49,7 +49,7 @@ export default function OwnRecipeDetails() {
     </>
   );
 }
-//margin: 2rem 0 2rem;
+
 const StyledPlayer = styled.div`
   width: 100%;
   height: 30vh;
@@ -57,7 +57,6 @@ const StyledPlayer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  border: 3px solid black;
 `;
 
 const StyledTextarea = styled.textarea`
