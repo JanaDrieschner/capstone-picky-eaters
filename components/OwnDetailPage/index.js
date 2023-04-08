@@ -1,68 +1,69 @@
-import styled from "styled-components";
+import { useRouter } from "next/router";
 import ReactPlayer from "react-player";
 import Heading from "../Heading";
 import useLocalStorageState from "use-local-storage-state";
+import styled from "styled-components";
+import Link from "next/link";
 
-export default function OwnRecipeDetails() {
-  const [note, setNote, isNoteSaved] = useLocalStorageState("note", "");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+export default function OwnRecipeDetails({ url }) {
+  const [note, setNote, isNoteSaved, setIsNoteSaved] = useLocalStorageState(
+    "note",
+    ""
+  );
+  const router = useRouter();
+  const { link } = router.query;
 
   const handleChange = (event) => {
     setNote(event.target.value);
+    setIsNoteSaved(false);
   };
 
-  const handleSaveNote = () => {
-    setNoteSaved(true);
+  const handleSaveNote = (event) => {
+    event.preventDefault();
+    setIsNoteSaved(true);
   };
 
-  const handleDeleteNote = () => {
+  const handleDeleteNote = (event) => {
+    event.preventDefault();
     setNote("");
-    setNoteSaved(false);
+    setIsNoteSaved(false);
   };
 
   return (
     <>
       <Heading>My Recipe</Heading>
-      <StyledPlayer>
-        <ReactPlayer
-          controls
-          url="https://www.youtube.com/watch?v=_VPpFU3Jyq4"
-        />
-      </StyledPlayer>
-      <form onSubmit={handleSubmit}>
+
+      {link && (
+        <StyledPlayer>
+          <ReactPlayer url={link} width="100%" height="200px" controls />
+        </StyledPlayer>
+      )}
+
+      <form onSubmit={handleSaveNote}>
         <StyledTextarea value={note} name="notes" onChange={handleChange} />
         <br /> <br />
-        <StyledSection>
-          <StyledButton
-            type="submit"
-            onClick={handleSaveNote}
-            disabled={isNoteSaved}
-          >
+        <div>
+          <StyledButton type="submit" disabled={isNoteSaved}>
             {isNoteSaved ? "Saved" : "Save"}
           </StyledButton>
           <StyledButton onClick={handleDeleteNote}>Delete</StyledButton>
-        </StyledSection>
+        </div>
       </form>
     </>
   );
 }
-
 const StyledPlayer = styled.div`
-  width: 100%;
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+`;
+
+const StyledSection = styled.div`
+  margin-top: 1rem;
 `;
 
 const StyledTextarea = styled.textarea`
   width: 100%;
   height: 30vh;
-  margin-top: 5rem;
 
   font-family: nunito, sans-serif;
   display: block;
@@ -73,16 +74,10 @@ const StyledTextarea = styled.textarea`
   border-radius: 20px;
 `;
 
-const StyledSection = styled.section`
-  display: flex;
-  justify-content: space-around;
-`;
-
 const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
+  display: inline-block;
+
+  font-size: 16px;
 
   border-radius: 20px;
   background-color: #0f5c64;
@@ -90,6 +85,6 @@ const StyledButton = styled.button`
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
-  width: 20%;
-  hight: 20px;
+  width: 50%;
+  hight: 0px;
 `;
