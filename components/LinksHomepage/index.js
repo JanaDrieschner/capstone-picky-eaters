@@ -28,10 +28,16 @@ export default function LinksHomepage() {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setLink("");
     setTitle("");
+    router.push("/myrecipes");
+
+    /*setUserRecipes(updatedRecipes);
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+    setLink("");
+    setTitle("");
     router.push({
-      pathname: "/myrecipes/ownrecipedetailpage",
+      pathname: `/myrecipes/${updatedRecipes.length - 1}`,
       query: { link: newRecipe.link },
-    });
+    });*/
   };
 
   const handleLinkChange = (event) => {
@@ -123,6 +129,7 @@ text-decoration: none;
 
 
 `;
+
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
@@ -138,6 +145,7 @@ const StyledButton = styled.button`
   box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
   width: 30%;
 `;
+
 const StyledTitle = styled.p`
   display: flex;
   align-items: center;

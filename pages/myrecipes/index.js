@@ -6,33 +6,27 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BsArrowRightCircle } from "react-icons/bs";
 import Link from "next/link";
 
-export default function OwnRecipes() {
-  const [recipes, setRecipes] = useState([]);
+export default function OwnRecipes({ newRecipe }) {
+  const [recipesList, setRecipesList] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
     const storedRecipes = localStorage.getItem("recipes");
     if (storedRecipes) {
-      setRecipes(JSON.parse(storedRecipes));
+      setRecipesList(JSON.parse(storedRecipes));
     }
   }, []);
 
-  const openLinkInNewTab = (link) => {
-    if (typeof window !== "undefined") {
-      window.open(link, "_blank");
-    }
-  };
-
   const handleDeleteRecipe = (index) => {
-    const newRecipes = [...recipes];
+    const newRecipes = [...recipesList];
     newRecipes.splice(index, 1);
-    setRecipes(newRecipes);
+    setRecipesList(newRecipes);
     localStorage.setItem("recipes", JSON.stringify(newRecipes));
   };
 
   const handleRecipeClick = (recipe) => {
     if (recipe.link) {
-      openLinkInNewTab(recipe.link);
+      router.push(`/myrecipes/${recipe.id}`);
     } else {
       router.push(`/recipes/${recipe.id}`);
     }
@@ -42,8 +36,8 @@ export default function OwnRecipes() {
     <>
       <Heading>My Recipes</Heading>
       <StyledArticle>
-        {recipes.length > 0 ? (
-          recipes.map((recipe, index) => (
+        {recipesList.length > 0 ? (
+          recipesList.map((recipe, index) => (
             <StyledSection key={index}>
               <StyledButton onClick={() => handleRecipeClick(recipe)}>
                 <a>{recipe.title}</a>
@@ -51,12 +45,17 @@ export default function OwnRecipes() {
               <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
                 <AiOutlineDelete />
               </StyledDeleteButton>
-
-              <StyledLink
-                href={recipe.link ? recipe.link : `/recipes/${recipe.id}`}
-              >
-                <BsArrowRightCircle />
-              </StyledLink>
+              {recipe.link ? (
+                <StyledLink href={`/myrecipes/${recipe.id}`}>
+                  <BsArrowRightCircle />
+                </StyledLink>
+              ) : (
+                <Link href={`/recipes/${recipe.id}`}>
+                  <StyledLink>
+                    <BsArrowRightCircle />
+                  </StyledLink>
+                </Link>
+              )}
             </StyledSection>
           ))
         ) : (
