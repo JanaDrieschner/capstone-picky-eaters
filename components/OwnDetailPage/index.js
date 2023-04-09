@@ -1,33 +1,39 @@
 import { useRouter } from "next/router";
 import ReactPlayer from "react-player";
 import Heading from "../Heading";
-import useLocalStorageState from "use-local-storage-state";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function OwnRecipeDetails() {
-  const [note, setNote, isNoteSaved, setIsNoteSaved] = useLocalStorageState(
-    "note",
-    ""
-  );
+const OwnRecipeDetails = () => {
   const router = useRouter();
   const { link } = useRouter().query;
   const { title } = router.query;
 
+  const localStorageKey = `note-${title}`;
+
+  const [note, setNote] = useState("");
+
+  useEffect(() => {
+    const storedNote = localStorage.getItem(localStorageKey);
+    if (storedNote) {
+      setNote(storedNote);
+    }
+  }, [localStorageKey]);
+
   const handleChange = (event) => {
     setNote(event.target.value);
-    setIsNoteSaved(false);
   };
 
   const handleSaveNote = (event) => {
     event.preventDefault();
-    setIsNoteSaved(true);
+    localStorage.setItem(localStorageKey, note);
   };
 
   const handleDeleteNote = (event) => {
     event.preventDefault();
+    localStorage.removeItem(localStorageKey);
     setNote("");
-    setIsNoteSaved(false);
   };
 
   return (
@@ -44,15 +50,15 @@ export default function OwnRecipeDetails() {
         <StyledTextarea value={note} name="notes" onChange={handleChange} />
         <br /> <br />
         <div>
-          <StyledButton type="submit" disabled={isNoteSaved}>
-            {isNoteSaved ? "Saved" : "Save"}
-          </StyledButton>
+          <StyledButton type="submit">Save</StyledButton>
           <StyledButton onClick={handleDeleteNote}>Delete</StyledButton>
         </div>
       </form>
     </>
   );
-}
+};
+
+export default OwnRecipeDetails;
 
 const StyledPlayer = styled.div`
   margin-top: 2rem;

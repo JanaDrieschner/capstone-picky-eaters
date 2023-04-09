@@ -47,17 +47,6 @@ export default function OwnRecipes({ newRecipe }) {
               <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
                 <AiOutlineDelete />
               </StyledDeleteButton>
-              {recipe.link ? (
-                <StyledLink href={`/myrecipes/${recipe.id}`}>
-                  <BsArrowRightCircle />
-                </StyledLink>
-              ) : (
-                <Link href={`/recipes/${recipe.id}`}>
-                  <StyledLink>
-                    <BsArrowRightCircle />
-                  </StyledLink>
-                </Link>
-              )}
             </StyledSection>
           ))
         ) : (
