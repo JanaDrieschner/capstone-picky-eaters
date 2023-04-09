@@ -5,13 +5,13 @@ import useLocalStorageState from "use-local-storage-state";
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function OwnRecipeDetails({ url }) {
+export default function OwnRecipeDetails() {
   const [note, setNote, isNoteSaved, setIsNoteSaved] = useLocalStorageState(
     "note",
     ""
   );
   const router = useRouter();
-  const { link } = router.query;
+  const { link } = useRouter().query;
 
   const handleChange = (event) => {
     setNote(event.target.value);
@@ -52,8 +52,9 @@ export default function OwnRecipeDetails({ url }) {
     </>
   );
 }
+
 const StyledPlayer = styled.div`
-  margin-top: 6rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 `;
 
