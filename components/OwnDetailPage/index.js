@@ -12,6 +12,7 @@ export default function OwnRecipeDetails() {
   );
   const router = useRouter();
   const { link } = useRouter().query;
+  const { title } = router.query;
 
   const handleChange = (event) => {
     setNote(event.target.value);
@@ -31,7 +32,7 @@ export default function OwnRecipeDetails() {
 
   return (
     <>
-      <Heading>My Recipe</Heading>
+      <Heading>{title}</Heading>
 
       {link && (
         <StyledPlayer>

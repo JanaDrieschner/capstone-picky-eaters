@@ -26,7 +26,9 @@ export default function OwnRecipes({ newRecipe }) {
 
   const handleRecipeClick = (recipe) => {
     if (recipe.link) {
-      router.push(`/myrecipes/${recipe.id}?link=${recipe.link}`);
+      router.push(
+        `/myrecipes/${recipe.id}?link=${recipe.link}&title=${recipe.title}`
+      );
     } else {
       router.push(`/recipes/${recipe.id}`);
     }
