@@ -52,9 +52,7 @@ export default function LinksHomepage() {
     <>
       <StyledWrapper>
         <StyledForm onSubmit={handleSubmit}>
-          <StyledTitle>
-            <p>Add Recipe</p>
-          </StyledTitle>
+          <StyledTitle>Add Recipe</StyledTitle>
           <label htmlFor="link">Link</label>
           <br />
           <input
@@ -84,13 +82,15 @@ export default function LinksHomepage() {
 
         <StyledLink href="/recipes/">Inspire Me</StyledLink>
       </StyledWrapper>
-
       <section>
-        {userRecipes.map((recipe, index) => (
-          <Link key={index} href={recipe.link}>
-            {recipe.title}
-          </Link>
-        ))}
+        {userRecipes.map(
+          (recipe, index) =>
+            recipe.link && (
+              <Link key={index} href={recipe.link}>
+                {recipe.title}
+              </Link>
+            )
+        )}
       </section>
     </>
   );
@@ -146,7 +146,7 @@ const StyledButton = styled.button`
   width: 30%;
 `;
 
-const StyledTitle = styled.p`
+const StyledTitle = styled.h3`
   display: flex;
   align-items: center;
   justify-content: center;
