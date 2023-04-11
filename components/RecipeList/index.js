@@ -4,6 +4,25 @@ import useSWR from "swr";
 import Image from "next/image";
 import styled from "styled-components";
 import Heading from "../Heading";
+import { useState } from "react";
+import { BsArrowRightCircle } from "react-icons/bs";
+
+const mealTypes = [
+  "main course",
+  "side dish",
+  "dessert",
+  "appetizer",
+  "salad",
+  "bread",
+  "breakfast",
+  "soup",
+  "beverage",
+  "sauce",
+  "marinade",
+  "fingerfood",
+  "snack",
+  "drink",
+];
 
 function RefreshButton({ onRefetch }) {
   return (
@@ -14,18 +33,41 @@ function RefreshButton({ onRefetch }) {
 }
 
 export default function RecipeListRandom({ recipes }) {
+  const [selectedMealType, setSelectedMealType] = useState("");
+
   const { data, error, isLoading, mutate } = useSWR(
-    `/api/spoonacular/recipes/random?number=20`
+    `/api/spoonacular/recipes/random?number=20&tags=${selectedMealType}`
   );
 
   if (error) return <p>failed to load</p>;
   if (isLoading) return <p>loading...</p>;
 
+  const handleMealType = (event) => {
+    setSelectedMealType(event.target.value);
+  };
+
   return (
     <>
       <Heading>New Ideas</Heading>
-
       <StyledContainer>
+        <StyledSection>
+          <StyledLabel htmlFor="mealType">Food cravings</StyledLabel>
+          <StyledOption>
+            <select
+              id="mealType"
+              value={selectedMealType}
+              onChange={handleMealType}
+            >
+              <option value="">Just Pick</option>
+              {mealTypes.map((type) => (
+                <option value={type} key={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </StyledOption>
+        </StyledSection>
+
         {data &&
           data.recipes &&
           data.recipes.map((recipe) => (
@@ -43,9 +85,10 @@ export default function RecipeListRandom({ recipes }) {
                 </StyledImagePlaceholder>
               )}
 
-              <Link href={`/recipes/${recipe.id}`}>
-                <StyledTitle>{recipe.title}</StyledTitle>
-              </Link>
+              <StyledLink href={`/recipes/${recipe.id}`}>
+                <BsArrowRightCircle />
+              </StyledLink>
+              <StyledTitle>{recipe.title}</StyledTitle>
             </StyledArticle>
           ))}
 
@@ -60,12 +103,15 @@ const StyledContainer = styled.div`
   padding-top: 80px;
   padding-bottom: 80px;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
 `;
 
 const StyledArticle = styled.article`
+position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-around
   border: 1px solid #BDC0BF;
   width: 70%;
   margin-left: 10px;
@@ -130,4 +176,58 @@ const StyledImagePlaceholder = styled.div`
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
   word-wrap: break-word;
+  margin-left: 15px;
+  margin-top: 10px;
+`;
+
+const StyledLink = styled(Link)`
+  color: white;
+  margin: 15px;
+  font-size: 30px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+const StyledSection = styled.section`
+  margin-left: 10px;
+  margin-top: 5px;
+  padding 1.3em 3em;
+white-space: nowrap;
+margin: 10px;
+text-transform: uppercase;
+font-size: 15px;
+font-weight: 500;
+color: #F4F5F6;
+background-color: #0F5C64;
+border: 1px ridge #BDC0BF;
+border-radius: 45px;
+box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
+transition: all 0.3s ease 0s;
+&:hover {
+  background-color: #0f5c64;
+  box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
+  color: #86887b;
+  transform: translateY(-7px);
+ 
+`;
+
+const StyledLabel = styled.div`
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledOption = styled.div`
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
 `;
