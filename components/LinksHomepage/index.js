@@ -45,9 +45,7 @@ export default function LinksHomepage() {
     <>
       <StyledWrapper>
         <StyledForm onSubmit={handleSubmit}>
-          <StyledTitle>
-            <p>Add Recipe</p>
-          </StyledTitle>
+          <StyledTitle>Add Recipe</StyledTitle>
           <label htmlFor="link">Link</label>
           <br />
           <input
@@ -81,7 +79,7 @@ export default function LinksHomepage() {
   );
 }
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;

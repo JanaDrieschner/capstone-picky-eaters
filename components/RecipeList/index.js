@@ -98,7 +98,7 @@ export default function RecipeListRandom({ recipes }) {
   );
 }
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.section`
   display: flex;
   padding-top: 80px;
   padding-bottom: 80px;
@@ -171,7 +171,7 @@ transition: all 0.3s ease 0s;
   
 `;
 
-const StyledImagePlaceholder = styled.div`
+const StyledImagePlaceholder = styled.section`
   color: #f4f5f6;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
@@ -213,7 +213,7 @@ transition: all 0.3s ease 0s;
  
 `;
 
-const StyledLabel = styled.div`
+const StyledLabel = styled.section`
   font-size: 16px;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
@@ -222,7 +222,7 @@ const StyledLabel = styled.div`
   justify-content: center;
 `;
 
-const StyledOption = styled.div`
+const StyledOption = styled.section`
   font-size: 16px;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
