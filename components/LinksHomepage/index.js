@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { IoIosAddCircleOutline } from "react-icons/io";
-
 import { useRouter } from "next/router";
-
-import { useState, useEffect } from "react";
+import ReactPlayer from "react-player";
 
 export default function LinksHomepage() {
-  const [recipes, setRecipes] = useState([]);
+  const [userRecipes, setUserRecipes] = useState([]);
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
   const router = useRouter();
@@ -16,7 +14,7 @@ export default function LinksHomepage() {
   useEffect(() => {
     const storedRecipes = JSON.parse(localStorage.getItem("recipes"));
     if (storedRecipes) {
-      setRecipes(storedRecipes);
+      setUserRecipes(storedRecipes);
     }
   }, []);
 
@@ -24,13 +22,22 @@ export default function LinksHomepage() {
     event.preventDefault();
 
     const newRecipe = { title, link };
-    const updatedRecipes = [...recipes, newRecipe];
+    const updatedRecipes = [...userRecipes, newRecipe];
 
-    setRecipes(updatedRecipes);
+    setUserRecipes(updatedRecipes);
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setLink("");
     setTitle("");
     router.push("/myrecipes");
+
+    /*setUserRecipes(updatedRecipes);
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+    setLink("");
+    setTitle("");
+    router.push({
+      pathname: `/myrecipes/${updatedRecipes.length - 1}`,
+      query: { link: newRecipe.link },
+    });*/
   };
 
   const handleLinkChange = (event) => {
@@ -45,6 +52,7 @@ export default function LinksHomepage() {
     <>
       <StyledWrapper>
         <StyledForm onSubmit={handleSubmit}>
+
           <StyledTitle id="title-id" aria-labelledby="title-label">
             Add Recipe
           </StyledTitle>
@@ -52,6 +60,7 @@ export default function LinksHomepage() {
 
           <StyledInput
             id="link"
+
             type="text"
             name="link"
             value={link}
@@ -79,6 +88,16 @@ export default function LinksHomepage() {
 
         <StyledLink href="/recipes/">Inspire Me</StyledLink>
       </StyledWrapper>
+      <section>
+        {userRecipes.map(
+          (recipe, index) =>
+            recipe.link && (
+              <Link key={index} href={recipe.link}>
+                {recipe.title}
+              </Link>
+            )
+        )}
+      </section>
     </>
   );
 }
@@ -117,6 +136,7 @@ text-decoration: none;
 
 `;
 
+
 const StyledLabel = styled.label`
   display: block;
   margin: 10px;
@@ -126,6 +146,7 @@ const StyledInput = styled.input`
   display: block;
   margin: 8px;
 `;
+
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
@@ -141,7 +162,9 @@ const StyledButton = styled.button`
   box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
   width: 30%;
 `;
+
 const StyledTitle = styled.h4`
+
   display: flex;
   align-items: center;
   justify-content: center;
