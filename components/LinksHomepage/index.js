@@ -52,20 +52,26 @@ export default function LinksHomepage() {
     <>
       <StyledWrapper>
         <StyledForm onSubmit={handleSubmit}>
-          <StyledTitle>Add Recipe</StyledTitle>
-          <label htmlFor="link">Link</label>
-          <br />
-          <input
+
+          <StyledTitle id="title-id" aria-labelledby="title-label">
+            Add Recipe
+          </StyledTitle>
+          <StyledLabel htmlFor="link">Link</StyledLabel>
+
+          <StyledInput
+            id="link"
+
             type="text"
             name="link"
             value={link}
             onChange={handleLinkChange}
             required
           />
-          <br /> <br />
-          <label htmlFor="title">Title</label>
-          <br />
-          <input
+
+          <StyledLabel htmlFor="title">Title</StyledLabel>
+
+          <StyledInput
+            id="title"
             type="text"
             name="title"
             value={title}
@@ -96,7 +102,7 @@ export default function LinksHomepage() {
   );
 }
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,6 +136,17 @@ text-decoration: none;
 
 `;
 
+
+const StyledLabel = styled.label`
+  display: block;
+  margin: 10px;
+`;
+
+const StyledInput = styled.input`
+  display: block;
+  margin: 8px;
+`;
+
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
@@ -146,11 +163,15 @@ const StyledButton = styled.button`
   width: 30%;
 `;
 
-const StyledTitle = styled.h3`
+const StyledTitle = styled.h4`
+
+
+
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -10px;
+  margin-top: -5px;
+  font-weight: normal;
 `;
 
 const StyledLink = styled(Link)`
