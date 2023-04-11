@@ -52,8 +52,9 @@ export default function RecipeListRandom({ recipes }) {
       <StyledContainer>
         <StyledSection>
           <StyledLabel htmlFor="mealType">Food cravings</StyledLabel>
-          <StyledOption>
-            <select
+
+          <option>
+            <StyledSelect
               id="mealType"
               value={selectedMealType}
               onChange={handleMealType}
@@ -64,8 +65,8 @@ export default function RecipeListRandom({ recipes }) {
                   {type}
                 </option>
               ))}
-            </select>
-          </StyledOption>
+            </StyledSelect>
+          </option>
         </StyledSection>
 
         {data &&
@@ -80,9 +81,7 @@ export default function RecipeListRandom({ recipes }) {
                   height={130}
                 />
               ) : (
-                <StyledImagePlaceholder>
-                  Image is not available
-                </StyledImagePlaceholder>
+                <StyledPlaceholder>Image is not available</StyledPlaceholder>
               )}
 
               <StyledLink href={`/recipes/${recipe.id}`}>
@@ -171,7 +170,7 @@ transition: all 0.3s ease 0s;
   
 `;
 
-const StyledImagePlaceholder = styled.section`
+const StyledPlaceholder = styled.p`
   color: #f4f5f6;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
@@ -191,7 +190,8 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledSection = styled.section`
-  margin-left: 10px;
+
+margin-left: 10px;
   margin-top: 5px;
   padding 1.3em 3em;
 white-space: nowrap;
@@ -213,7 +213,7 @@ transition: all 0.3s ease 0s;
  
 `;
 
-const StyledLabel = styled.section`
+const StyledLabel = styled.label`
   font-size: 16px;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
@@ -222,7 +222,7 @@ const StyledLabel = styled.section`
   justify-content: center;
 `;
 
-const StyledOption = styled.section`
+const StyledSelect = styled.select`
   font-size: 16px;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
