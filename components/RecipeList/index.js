@@ -53,20 +53,18 @@ export default function RecipeListRandom({ recipes }) {
         <StyledSection>
           <StyledLabel htmlFor="mealType">Food cravings</StyledLabel>
 
-          <option>
-            <StyledSelect
-              id="mealType"
-              value={selectedMealType}
-              onChange={handleMealType}
-            >
-              <option value="">Just Pick</option>
-              {mealTypes.map((type) => (
-                <option value={type} key={type}>
-                  {type}
-                </option>
-              ))}
-            </StyledSelect>
-          </option>
+          <StyledSelect
+            id="mealType"
+            value={selectedMealType}
+            onChange={handleMealType}
+          >
+            <option value="">Just Pick</option>
+            {mealTypes.map((type) => (
+              <option value={type} key={type}>
+                {type}
+              </option>
+            ))}
+          </StyledSelect>
         </StyledSection>
 
         {data &&
