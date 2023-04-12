@@ -76,6 +76,17 @@ export default function OwnRecipes({ newRecipe }) {
   );
 }
 
+const StyledSelect = styled.select`
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  color: #0f5c64;
+`;
+
 const StyledArticle = styled.article`
   display: flex;
   padding-top: 80px;
