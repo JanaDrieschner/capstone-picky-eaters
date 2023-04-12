@@ -9,6 +9,7 @@ export default function LinksHomepage() {
   const [userRecipes, setUserRecipes] = useState([]);
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("Breakfast");
   const router = useRouter();
 
   useEffect(() => {
@@ -28,16 +29,8 @@ export default function LinksHomepage() {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setLink("");
     setTitle("");
+    setCategory("Breakfast");
     router.push("/myrecipes");
-
-    /*setUserRecipes(updatedRecipes);
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-    setLink("");
-    setTitle("");
-    router.push({
-      pathname: `/myrecipes/${updatedRecipes.length - 1}`,
-      query: { link: newRecipe.link },
-    });*/
   };
 
   const handleLinkChange = (event) => {
@@ -48,11 +41,14 @@ export default function LinksHomepage() {
     setTitle(event.target.value);
   };
 
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
   return (
     <>
       <StyledWrapper>
         <StyledForm onSubmit={handleSubmit}>
-
           <StyledTitle id="title-id" aria-labelledby="title-label">
             Add Recipe
           </StyledTitle>
@@ -60,7 +56,6 @@ export default function LinksHomepage() {
 
           <StyledInput
             id="link"
-
             type="text"
             name="link"
             value={link}
@@ -79,6 +74,22 @@ export default function LinksHomepage() {
             required
             maxLength="30"
           />
+          <StyledLabel htmlFor="category">Category</StyledLabel>
+          <StyledSelect
+            id="category"
+            value={category}
+            onChange={handleCategoryChange}
+          >
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+            <option value="Drink">Drink</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Holiday">Holiday</option>
+            <option value="Other">Other</option>
+          </StyledSelect>
+
           <StyledButton type="submit">
             <StyledIcon>
               <IoIosAddCircleOutline />
@@ -101,6 +112,16 @@ export default function LinksHomepage() {
     </>
   );
 }
+
+const StyledFilter = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const StyledSelect = styled.select`
+  padding: 5px;
+`;
 
 const StyledWrapper = styled.section`
   display: flex;
@@ -136,7 +157,6 @@ text-decoration: none;
 
 `;
 
-
 const StyledLabel = styled.label`
   display: block;
   margin: 10px;
@@ -164,9 +184,6 @@ const StyledButton = styled.button`
 `;
 
 const StyledTitle = styled.h4`
-
-
-
   display: flex;
   align-items: center;
   justify-content: center;
