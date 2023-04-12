@@ -4,9 +4,8 @@ import { useRouter } from "next/router";
 
 export default function Notes({ recipeId }) {
   const router = useRouter();
-  const { title } = router.query;
 
-  const localStorageKey = `note-${title}`;
+  const localStorageKey = `note-${recipeId}`;
 
   const [isOpen, setIsOpen] = useState(false);
   const [addNote, setAddNote] = useState("");
@@ -20,9 +19,8 @@ export default function Notes({ recipeId }) {
   }, [localStorageKey]);
 
   useEffect(() => {
-    const localStorageKey = `note-${title}`;
     localStorage.setItem(localStorageKey, addNote);
-  }, [addNote, title]);
+  }, [addNote, localStorageKey]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,6 +33,7 @@ export default function Notes({ recipeId }) {
   const handleChange = (event) => {
     setAddNote(event.target.value);
   };
+
   const handleDelete = () => {
     localStorage.removeItem(localStorageKey);
     setAddNote("");

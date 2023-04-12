@@ -67,7 +67,7 @@ export default function RandomDetailPage({ recipe }) {
         </ul>
         <h3>Cooking Steps:</h3>
         <p> {filteredInstructions}</p>
-        <Notes />
+        <Notes recipeId={recipe.id} />
       </StyledArticle>
     </>
   );
