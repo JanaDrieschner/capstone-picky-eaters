@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useRouter } from "next/router";
 import Notes from "../Notes";
+import { BsArrowLeftCircle } from "react-icons/bs";
 
 export default function RandomDetailPage({ recipe }) {
   const {
@@ -43,11 +44,14 @@ export default function RandomDetailPage({ recipe }) {
           width={190}
           height={170}
         />
-        <Link href="/myrecipes">
-          <StyledIcon>
+        <StyledSection>
+          <Link href="/recipes">
+            <BsArrowLeftCircle />
+          </Link>
+          <Link href="/myrecipes">
             <IoIosAddCircleOutline onClick={handleSaveRecipe} />
-          </StyledIcon>
-        </Link>
+          </Link>
+        </StyledSection>
 
         <h3>{recipe.title}</h3>
 
@@ -94,12 +98,11 @@ const StyledImage = styled(Image)`
   z-index: 0;
 `;
 
-const StyledIcon = styled.div`
-  font-size: 40px;
+const StyledSection = styled.section`
+  font-size: 30px;
   display: flex;
-  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 5px;
 
   color: #0f5c64;
-
-  color: ;
 `;
