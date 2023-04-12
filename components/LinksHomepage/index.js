@@ -74,7 +74,8 @@ export default function LinksHomepage() {
             required
             maxLength="30"
           />
-          <StyledLabel htmlFor="category">Category</StyledLabel>
+          <StyledLabel htmlFor="category"></StyledLabel>
+
           <StyledSelect
             id="category"
             value={category}
@@ -113,14 +114,16 @@ export default function LinksHomepage() {
   );
 }
 
-const StyledFilter = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
 const StyledSelect = styled.select`
-  padding: 5px;
+  text-align: center;
+
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+
+  margin: 15px;
+
+  color: #0f5c64;
 `;
 
 const StyledWrapper = styled.section`
