@@ -5,6 +5,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useRouter } from "next/router";
+import Notes from "../Notes";
 
 export default function RandomDetailPage({ recipe }) {
   const {
@@ -62,6 +63,7 @@ export default function RandomDetailPage({ recipe }) {
         </ul>
         <h3>Cooking Steps:</h3>
         <p> {filteredInstructions}</p>
+        <Notes />
       </StyledArticle>
     </>
   );
