@@ -29,7 +29,11 @@ export default function RandomDetailPage({ recipe }) {
   const handleSaveRecipe = () => {
     const storedRecipes = localStorage.getItem("recipes");
     const newRecipes = storedRecipes ? JSON.parse(storedRecipes) : [];
-    newRecipes.push(recipe);
+    const importedRecipe = {
+      ...recipe,
+      category: "Imported",
+    };
+    newRecipes.push(importedRecipe);
     localStorage.setItem("recipes", JSON.stringify(newRecipes));
     router.push("/myrecipes");
   };
@@ -48,9 +52,7 @@ export default function RandomDetailPage({ recipe }) {
           <Link href="/recipes">
             <BsArrowLeftCircle />
           </Link>
-          <Link href="/myrecipes">
-            <IoIosAddCircleOutline onClick={handleSaveRecipe} />
-          </Link>
+          <IoIosAddCircleOutline onClick={handleSaveRecipe} />
         </StyledSection>
 
         <h3>{recipe.title}</h3>
