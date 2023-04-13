@@ -8,6 +8,8 @@ import Link from "next/link";
 
 export default function OwnRecipes({ newRecipe }) {
   const [recipesList, setRecipesList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   const router = useRouter();
 
   useEffect(() => {
@@ -27,35 +29,68 @@ export default function OwnRecipes({ newRecipe }) {
   const handleRecipeClick = (recipe) => {
     if (recipe.link) {
       router.push(
-        `/myrecipes/${recipe.id}?link=${recipe.link}&title=${recipe.title}`
+        `/myrecipes/${recipe.id}?link=${recipe.link}&title=${recipe.title}&category=${recipe.category}`
       );
     } else {
       router.push(`/recipes/${recipe.id}`);
     }
   };
 
+  const filteredRecipes = recipesList.filter(
+    (recipe) =>
+      selectedCategory === "All" || recipe.category === selectedCategory
+  );
+
   return (
     <>
       <Heading>My Recipes</Heading>
+
       <StyledArticle>
-        {recipesList.length > 0 ? (
-          recipesList.map((recipe, index) => (
-            <StyledSection key={index}>
-              <StyledButton onClick={() => handleRecipeClick(recipe)}>
-                <a>{recipe.title}</a>
-              </StyledButton>
-              <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
-                <AiOutlineDelete />
-              </StyledDeleteButton>
-            </StyledSection>
-          ))
-        ) : (
-          <p>You have no saved recipes.</p>
-        )}
+        <StyledSelect
+          value={selectedCategory}
+          onChange={(event) => setSelectedCategory(event.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
+          <option value="Drink">Drink</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Holiday">Holiday</option>
+          <option value="Other">Other</option>
+        </StyledSelect>
+
+        {filteredRecipes.map((recipe, index) => (
+          <StyledSection key={index}>
+            <StyledButton onClick={() => handleRecipeClick(recipe)}>
+              <a>{recipe.title}</a>
+            </StyledButton>
+            <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
+              <AiOutlineDelete />
+            </StyledDeleteButton>
+          </StyledSection>
+        ))}
       </StyledArticle>
     </>
   );
 }
+/*{recipesList
+  .filter((recipe) =>
+    selectedCategory === "All"
+      ? true
+      : recipe.category === selectedCategory*/
+
+const StyledSelect = styled.select`
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  color: #0f5c64;
+`;
 
 const StyledArticle = styled.article`
   display: flex;
