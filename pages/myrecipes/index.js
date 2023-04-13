@@ -98,18 +98,21 @@ const StyledArticle = styled.article`
   padding-bottom: 80px;
   justify-content: space-between;
   flex-direction: column;
+  align-items: center;
 `;
 
 const StyledSection = styled.section`
   display: flex;
   align-itens: center;
-  border: 3px ridge black;
+  border: 3px ridge #0f5c64;
   background-color: #0f5c64;
   border-radius: 20px;
   justify-content: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
   position: relative;
-  padding-right: 40px;
+
   margin-bottom: 6px;
+  width: 70%;
 `;
 
 const StyledButton = styled.button`
@@ -123,6 +126,9 @@ const StyledButton = styled.button`
   box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
   color: #f4f5f6;
   text-transform: uppercase;
+  font-size: 16px;
+  font-family: nunito, sans-serif;
+  font-weight: 500;
 `;
 
 const StyledDeleteButton = styled.button`
