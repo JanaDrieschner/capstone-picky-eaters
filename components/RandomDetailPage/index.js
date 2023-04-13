@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,17 +25,22 @@ export default function RandomDetailPage({ recipe }) {
   );
 
   const router = useRouter();
+  const [category, setCategory] = useState("");
 
   const handleSaveRecipe = () => {
     const storedRecipes = localStorage.getItem("recipes");
     const newRecipes = storedRecipes ? JSON.parse(storedRecipes) : [];
     const importedRecipe = {
       ...recipe,
-      category: "Imported",
+      category: category,
     };
     newRecipes.push(importedRecipe);
     localStorage.setItem("recipes", JSON.stringify(newRecipes));
     router.push("/myrecipes");
+  };
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
   };
 
   return (
@@ -52,6 +57,16 @@ export default function RandomDetailPage({ recipe }) {
           <Link href="/recipes">
             <BsArrowLeftCircle />
           </Link>
+          <select value={category} onChange={handleCategoryChange}>
+            <option value="">Select a category</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Holiday">Lunch</option>
+            <option value="Other">Other</option>
+          </select>
           <IoIosAddCircleOutline onClick={handleSaveRecipe} />
         </StyledSection>
 
@@ -74,7 +89,6 @@ export default function RandomDetailPage({ recipe }) {
     </>
   );
 }
-
 const StyledHeader = styled.header`
   position: relative;
   z-index: 1;
