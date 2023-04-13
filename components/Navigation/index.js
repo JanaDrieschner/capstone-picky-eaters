@@ -12,12 +12,18 @@ export default function Navigation({ children }) {
     <StyledFooter>
       <StyledList>
         <li>
-          <StyledLink href="/">
+          <StyledLink
+            href="/"
+            className={router.pathname === "/" ? "selected" : ""}
+          >
             <BiHomeAlt2 />
           </StyledLink>
         </li>
         <li>
-          <StyledLink href="/myrecipes">
+          <StyledLink
+            href="/myrecipes"
+            className={router.pathname === "/myrecipes" ? "selected" : ""}
+          >
             <MdOutlineFoodBank />
           </StyledLink>
         </li>
@@ -35,16 +41,22 @@ const StyledFooter = styled.footer`
   background-color: #f4f5f6;
   color: white;
   text-align: center;
-  border: 3px groove #86887b;
+  border: 3px ridge #0f5c64; ;
 `;
 
 const StyledList = styled.ul`
   list-style-type: none;
   display: flex;
   justify-content: space-around;
+  padding: 0 20px;
 `;
 
 const StyledLink = styled(Link)`
   font-size: 30px;
-  pading: 10px 25px;
+  padding: 10px 20px;
+  color: #0f5c64;
+
+  &.selected {
+    color: #c35e64;
+  }
 `;
