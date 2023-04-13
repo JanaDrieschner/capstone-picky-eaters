@@ -9,7 +9,7 @@ export default function LinksHomepage() {
   const [userRecipes, setUserRecipes] = useState([]);
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("Breakfast");
+  const [category, setCategory] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function LinksHomepage() {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setLink("");
     setTitle("");
-    setCategory("Breakfast");
+    setCategory("");
     router.push("/myrecipes");
   };
 
@@ -74,13 +74,14 @@ export default function LinksHomepage() {
             required
             maxLength="30"
           />
-          <StyledLabel htmlFor="category"></StyledLabel>
+          <StyledLabel htmlFor="category">Category</StyledLabel>
 
           <StyledSelect
             id="category"
             value={category}
             onChange={handleCategoryChange}
           >
+            <option value="" disabled selected></option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
