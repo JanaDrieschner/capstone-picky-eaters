@@ -36,9 +36,15 @@ export default function OwnRecipes({ newRecipe }) {
     }
   };
 
+  const filteredRecipes = recipesList.filter(
+    (recipe) =>
+      selectedCategory === "All" || recipe.category === selectedCategory
+  );
+
   return (
     <>
       <Heading>My Recipes</Heading>
+
       <StyledArticle>
         <StyledSelect
           value={selectedCategory}
@@ -55,26 +61,25 @@ export default function OwnRecipes({ newRecipe }) {
           <option value="Other">Other</option>
         </StyledSelect>
 
-        {recipesList
-          .filter((recipe) =>
-            selectedCategory === "All"
-              ? true
-              : recipe.category === selectedCategory
-          )
-          .map((recipe, index) => (
-            <StyledSection key={index}>
-              <StyledButton onClick={() => handleRecipeClick(recipe)}>
-                <a>{recipe.title}</a>
-              </StyledButton>
-              <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
-                <AiOutlineDelete />
-              </StyledDeleteButton>
-            </StyledSection>
-          ))}
+        {filteredRecipes.map((recipe, index) => (
+          <StyledSection key={index}>
+            <StyledButton onClick={() => handleRecipeClick(recipe)}>
+              <a>{recipe.title}</a>
+            </StyledButton>
+            <StyledDeleteButton onClick={() => handleDeleteRecipe(index)}>
+              <AiOutlineDelete />
+            </StyledDeleteButton>
+          </StyledSection>
+        ))}
       </StyledArticle>
     </>
   );
 }
+/*{recipesList
+  .filter((recipe) =>
+    selectedCategory === "All"
+      ? true
+      : recipe.category === selectedCategory*/
 
 const StyledSelect = styled.select`
   font-size: 16px;

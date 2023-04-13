@@ -22,7 +22,7 @@ export default function LinksHomepage() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const newRecipe = { title, link };
+    const newRecipe = { title, link, category };
     const updatedRecipes = [...userRecipes, newRecipe];
 
     setUserRecipes(updatedRecipes);
