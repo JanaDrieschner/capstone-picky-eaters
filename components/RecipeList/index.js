@@ -123,7 +123,7 @@ position: relative;
     
     
     box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
-    color: #86887b;
+    color: #266c73
     transform: translateY(-7px);
 `;
 

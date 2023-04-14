@@ -9,8 +9,6 @@ import Notes from "../Notes";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import { BsPlusCircle } from "react-icons/bs";
 
-BsPlusCircle;
-
 export default function RandomDetailPage({ recipe }) {
   const {
     id,
@@ -57,9 +55,9 @@ export default function RandomDetailPage({ recipe }) {
           height={170}
         />
         <StyledSection>
-          <StyledLink href="/recipes">
+          <StyledButton onClick={() => router.back()}>
             <BsArrowLeftCircle />
-          </StyledLink>
+          </StyledButton>
 
           <StyledSelect value={category} onChange={handleCategoryChange}>
             <option value="">Select a category</option>
@@ -87,7 +85,7 @@ export default function RandomDetailPage({ recipe }) {
             <li key={ingredient.id}>{ingredient.original}</li>
           ))}
         </ul>
-        <h3>Cooking Steps:</h3>
+        <h3>Cooking Steps</h3>
         <p> {filteredInstructions}</p>
         <Notes recipeId={recipe.id} />
       </StyledArticle>
@@ -114,10 +112,10 @@ const StyledImage = styled(Image)`
   border: 2px ridge black;
   width: 100%;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
 `;
 
 const StyledSection = styled.section`
@@ -129,10 +127,15 @@ const StyledSection = styled.section`
   color: #0f5c64;
 `;
 
-const StyledLink = styled(Link)`
-  background-color: 
-  font-size: 45;
+const StyledButton = styled.button`
+  background-color: transparent;
+  text-decoration: none;
+
   color: #0f5c64;
+  border: none;
+  font-size: 30px;
+
+  z-index: 1;
 `;
 
 const StyledWrapper = styled.div`
