@@ -93,34 +93,39 @@ const StyledImage = styled.div`
 const StyledSection = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+
   margin-top: 20px;
 `;
 
 const StyledTextarea = styled.textarea`
-  width: 110%;
+  width: 100%;
   height: 30vh;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  justify-content: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  border: 3px ridge #0f5c64;
 
   font-family: nunito, sans-serif;
   display: block;
   padding: 1rem;
   box-sizing: border-box;
   resize: none;
-  border: 5px solid #0f5c64;
+
   border-radius: 20px;
 `;
 
 const StyledButton = styled.button`
-  font-size: 16px;
-
+  font-size: 20px;
   border-radius: 20px;
   background-color: #0f5c64;
   color: white;
   border: none;
   border-radius: 45px;
-  box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
-  width: 50%;
-  hight: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  width: 150px;
+  hight: 20px;
   margin-right: 6px;
   margin-left: 6px;
 `;
