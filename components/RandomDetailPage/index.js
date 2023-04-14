@@ -7,6 +7,9 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { useRouter } from "next/router";
 import Notes from "../Notes";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
+
+BsPlusCircle;
 
 export default function RandomDetailPage({ recipe }) {
   const {
@@ -54,10 +57,11 @@ export default function RandomDetailPage({ recipe }) {
           height={170}
         />
         <StyledSection>
-          <Link href="/recipes">
+          <StyledLink href="/recipes">
             <BsArrowLeftCircle />
-          </Link>
-          <select value={category} onChange={handleCategoryChange}>
+          </StyledLink>
+
+          <StyledSelect value={category} onChange={handleCategoryChange}>
             <option value="">Select a category</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
@@ -66,8 +70,9 @@ export default function RandomDetailPage({ recipe }) {
             <option value="Dessert">Dessert</option>
             <option value="Holiday">Lunch</option>
             <option value="Other">Other</option>
-          </select>
-          <IoIosAddCircleOutline onClick={handleSaveRecipe} />
+          </StyledSelect>
+
+          <BsPlusCircle onClick={handleSaveRecipe} />
         </StyledSection>
 
         <h3>{recipe.title}</h3>
@@ -89,6 +94,7 @@ export default function RandomDetailPage({ recipe }) {
     </>
   );
 }
+
 const StyledHeader = styled.header`
   position: relative;
   z-index: 1;
@@ -121,4 +127,28 @@ const StyledSection = styled.section`
   margin-top: 5px;
 
   color: #0f5c64;
+`;
+
+const StyledLink = styled(Link)`
+  background-color: 
+  font-size: 45;
+  color: #0f5c64;
+`;
+
+const StyledWrapper = styled.div`
+  background-color: 
+  font-size: 45;
+  color: #0f5c64;
+
+
+`;
+
+const StyledSelect = styled.select`
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
 `;
