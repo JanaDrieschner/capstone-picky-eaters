@@ -136,8 +136,9 @@ const StyledSelect = styled.select`
   font-size: 16px;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
-  margin: 15px;
+  margin: 8px;
   color: #0f5c64;
+  width: 92%;
 `;
 
 const StyledWrapper = styled.section`
@@ -175,7 +176,7 @@ text-decoration: none;
 
 const StyledLabel = styled.label`
   display: block;
-  margin-top: 10px;
+  margin-top: 12px;
 `;
 
 const StyledInput = styled.input`
