@@ -74,6 +74,7 @@ export default function LinksHomepage() {
             required
             maxLength="30"
           />
+
           <StyledLabel htmlFor="category">Category</StyledLabel>
 
           <StyledSelect
@@ -163,7 +164,7 @@ text-decoration: none;
 
 const StyledLabel = styled.label`
   display: block;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const StyledInput = styled.input`
