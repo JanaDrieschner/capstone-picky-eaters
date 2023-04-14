@@ -61,6 +61,7 @@ export default function LinksHomepage() {
             value={link}
             onChange={handleLinkChange}
             required
+            autocomplete="off"
           />
 
           <StyledLabel htmlFor="title">Title</StyledLabel>
@@ -73,6 +74,7 @@ export default function LinksHomepage() {
             onChange={handleTitleChange}
             required
             maxLength="30"
+            autocomplete="off"
           />
 
           <StyledLabel htmlFor="category">Category</StyledLabel>
