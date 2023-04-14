@@ -48,7 +48,7 @@ export default function LinksHomepage() {
   return (
     <>
       <StyledWrapper>
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit} autocomplete="off">
           <StyledTitle id="title-id" aria-labelledby="title-label">
             Add Recipe
           </StyledTitle>
@@ -229,4 +229,5 @@ const StyledIcon = styled.div`
   margin-top: 10px;
   font-size: 30px;
   color: #f4f5f6;
+  margin-right: 30px;
 `;
