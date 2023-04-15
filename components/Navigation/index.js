@@ -15,6 +15,7 @@ export default function Navigation({ children }) {
           <StyledLink
             href="/"
             className={router.pathname === "/" ? "selected" : ""}
+            aria-labelledby="home-label"
           >
             <BiHomeAlt2 />
           </StyledLink>
@@ -23,6 +24,7 @@ export default function Navigation({ children }) {
           <StyledLink
             href="/myrecipes"
             className={router.pathname === "/myrecipes" ? "selected" : ""}
+            aria-labelledby="recipe-label"
           >
             <MdOutlineFoodBank />
           </StyledLink>

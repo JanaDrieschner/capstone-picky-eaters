@@ -75,11 +75,6 @@ export default function OwnRecipes({ newRecipe }) {
     </>
   );
 }
-/*{recipesList
-  .filter((recipe) =>
-    selectedCategory === "All"
-      ? true
-      : recipe.category === selectedCategory*/
 
 const StyledSelect = styled.select`
   font-size: 16px;

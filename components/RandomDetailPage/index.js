@@ -55,7 +55,10 @@ export default function RandomDetailPage({ recipe }) {
           height={170}
         />
         <StyledSection>
-          <StyledButton onClick={() => router.back()}>
+          <StyledButton
+            onClick={() => router.back()}
+            aria-labelledby="back-label"
+          >
             <BsArrowLeftCircle />
           </StyledButton>
 

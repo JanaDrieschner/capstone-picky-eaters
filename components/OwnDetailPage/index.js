@@ -72,6 +72,7 @@ const OwnRecipeDetails = () => {
           value={note}
           name="notes"
           onChange={handleChange}
+          aria-labelledby="notes-label"
           placeholder="Click on the image to access your saved website and add any notes you`d like"
         />
 
