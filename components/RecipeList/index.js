@@ -109,20 +109,21 @@ position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around
-  border: 1px solid #BDC0BF;
+  border: 3px ridge #0f5c64;
   width: 70%;
   margin-left: 10px;
   box-sizing: border-box;
   margin-bottom: 7px;;
   border-radius: 20px;
-  box-shadow: 0 3px 8px rgba (0, 0, 0, 0.24);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
   background-color: #0f5c64;
+  text-align: center;
   &:hover {
     background-color:#e7eeef;
     
     
     box-shadow: 0px 15 px 20px FaRegIdBadge(13, 240, 252, 0.4);
-    color: #86887b;
+    color: #266c73
     transform: translateY(-7px);
 `;
 
@@ -140,7 +141,8 @@ const StyledTitle = styled.h2`
 const StyledImage = styled(Image)`
   border-radius: 20%;
   padding: 15px;
-  box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 `;
 
 const StyledButton = styled.button`

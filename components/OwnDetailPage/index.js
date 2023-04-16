@@ -4,8 +4,9 @@ import Heading from "../Heading";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { BsArrowRightCircle } from "react-icons/bs";
+
 import Image from "next/image";
+import { BsArrowLeftCircle } from "react-icons/bs";
 
 const OwnRecipeDetails = () => {
   const router = useRouter();
@@ -67,9 +68,18 @@ const OwnRecipeDetails = () => {
       )}
 
       <form onSubmit={handleSaveNote}>
-        <StyledTextarea value={note} name="notes" onChange={handleChange} />
-        <br /> <br />
+        <StyledTextarea
+          value={note}
+          name="notes"
+          onChange={handleChange}
+          aria-labelledby="notes-label"
+          placeholder="Click on the image to access your saved website and add any notes you`d like"
+        />
+
         <StyledSection>
+          <StyledLink href="/myrecipes">
+            <BsArrowLeftCircle />
+          </StyledLink>
           <StyledButton type="submit">Save</StyledButton>
           <StyledButton onClick={handleDeleteNote}>Delete</StyledButton>
         </StyledSection>
@@ -87,40 +97,49 @@ const StyledPlayer = styled.div`
 
 const StyledImage = styled.div`
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 const StyledSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 0%;
 `;
 
 const StyledTextarea = styled.textarea`
-  width: 110%;
-  height: 30vh;
-
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  justify-content: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  border: 3px ridge #0f5c64;
   font-family: nunito, sans-serif;
   display: block;
   padding: 1rem;
   box-sizing: border-box;
   resize: none;
-  border: 5px solid #0f5c64;
   border-radius: 20px;
 `;
 
 const StyledButton = styled.button`
-  font-size: 16px;
-
+  font-size: 20px;
   border-radius: 20px;
   background-color: #0f5c64;
   color: white;
   border: none;
   border-radius: 45px;
-  box-shadow: 0px 8px 15px (rgba 0, 0, 0, 0.1);
-  width: 50%;
-  hight: 10px;
-  margin-right: 6px;
-  margin-left: 6px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  width: 120px;
+  height: 40px;
+  margin-right: 10px;
+  margin-left: 19px;
+`;
+
+const StyledLink = styled(Link)`
+  font-size: 30px;
+  color: #0f5c64;
+  padding: 20px;
 `;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Link from "next/link";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useRouter } from "next/router";
-import ReactPlayer from "react-player";
 
 export default function LinksHomepage() {
   const [userRecipes, setUserRecipes] = useState([]);
@@ -48,7 +47,11 @@ export default function LinksHomepage() {
   return (
     <>
       <StyledWrapper>
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledText>
+          Start by adding your own recipes or find inspiration in the existing
+          ones.
+        </StyledText>
+        <StyledForm onSubmit={handleSubmit} autocomplete="off">
           <StyledTitle id="title-id" aria-labelledby="title-label">
             Add Recipe
           </StyledTitle>
@@ -61,6 +64,7 @@ export default function LinksHomepage() {
             value={link}
             onChange={handleLinkChange}
             required
+            autocomplete="off"
           />
 
           <StyledLabel htmlFor="title">Title</StyledLabel>
@@ -73,7 +77,9 @@ export default function LinksHomepage() {
             onChange={handleTitleChange}
             required
             maxLength="30"
+            autocomplete="off"
           />
+
           <StyledLabel htmlFor="category">Category</StyledLabel>
 
           <StyledSelect
@@ -115,16 +121,24 @@ export default function LinksHomepage() {
   );
 }
 
+const StyledText = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  padding-left: 10px;
+  border-radius: 20px;
+  color: #0f5c64;
+`;
+
 const StyledSelect = styled.select`
   text-align: center;
-
   font-size: 16px;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
-
-  margin: 15px;
-
+  margin: 8px;
   color: #0f5c64;
+  width: 92%;
 `;
 
 const StyledWrapper = styled.section`
@@ -144,7 +158,6 @@ text-decoration: none;
   margin: 7px;
   text-transform: uppercase;
   font-weight: 500;
-  
   color: #F4F5F6;
   background-color:  #0F5C64;     
   border: 1px ridge #BDC0BF;
@@ -163,7 +176,7 @@ text-decoration: none;
 
 const StyledLabel = styled.label`
   display: block;
-  margin: 10px;
+  margin-top: 12px;
 `;
 
 const StyledInput = styled.input`
@@ -177,7 +190,6 @@ const StyledButton = styled.button`
   justify-content: center;
   font-size: 30px;
   padding-left: 100px;
-
   border-radius: 20px;
   background-color: #0f5c64;
   color: #0f5c64;
@@ -202,7 +214,6 @@ text-decoration: none;
   margin: 10px;
   text-transform: uppercase;
   font-weight: 500;
-  
   color: #F4F5F6;
   background-color:  #0F5C64;     
   border: 1px ridge #BDC0BF;
@@ -226,4 +237,5 @@ const StyledIcon = styled.div`
   margin-top: 10px;
   font-size: 30px;
   color: #f4f5f6;
+  margin-right: 30px;
 `;

@@ -7,6 +7,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { useRouter } from "next/router";
 import Notes from "../Notes";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
 
 export default function RandomDetailPage({ recipe }) {
   const {
@@ -54,10 +55,14 @@ export default function RandomDetailPage({ recipe }) {
           height={170}
         />
         <StyledSection>
-          <Link href="/recipes">
+          <StyledButton
+            onClick={() => router.back()}
+            aria-labelledby="back-label"
+          >
             <BsArrowLeftCircle />
-          </Link>
-          <select value={category} onChange={handleCategoryChange}>
+          </StyledButton>
+
+          <StyledSelect value={category} onChange={handleCategoryChange}>
             <option value="">Select a category</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
@@ -66,8 +71,9 @@ export default function RandomDetailPage({ recipe }) {
             <option value="Dessert">Dessert</option>
             <option value="Holiday">Lunch</option>
             <option value="Other">Other</option>
-          </select>
-          <IoIosAddCircleOutline onClick={handleSaveRecipe} />
+          </StyledSelect>
+
+          <BsPlusCircle onClick={handleSaveRecipe} />
         </StyledSection>
 
         <h3>{recipe.title}</h3>
@@ -82,13 +88,14 @@ export default function RandomDetailPage({ recipe }) {
             <li key={ingredient.id}>{ingredient.original}</li>
           ))}
         </ul>
-        <h3>Cooking Steps:</h3>
+        <h3>Cooking Steps</h3>
         <p> {filteredInstructions}</p>
         <Notes recipeId={recipe.id} />
       </StyledArticle>
     </>
   );
 }
+
 const StyledHeader = styled.header`
   position: relative;
   z-index: 1;
@@ -108,10 +115,10 @@ const StyledImage = styled(Image)`
   border: 2px ridge black;
   width: 100%;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
 `;
 
 const StyledSection = styled.section`
@@ -121,4 +128,33 @@ const StyledSection = styled.section`
   margin-top: 5px;
 
   color: #0f5c64;
+`;
+
+const StyledButton = styled.button`
+  background-color: transparent;
+  text-decoration: none;
+
+  color: #0f5c64;
+  border: none;
+  font-size: 30px;
+
+  z-index: 1;
+`;
+
+const StyledWrapper = styled.div`
+  background-color: 
+  font-size: 45;
+  color: #0f5c64;
+
+
+`;
+
+const StyledSelect = styled.select`
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
 `;
