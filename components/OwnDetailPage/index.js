@@ -73,7 +73,11 @@ const OwnRecipeDetails = () => {
           name="notes"
           onChange={handleChange}
           aria-labelledby="notes-label"
-          placeholder="Click on the image to access your saved website and add any notes you`d like"
+          placeholder={
+            link && link.includes("youtube")
+              ? "Add notes here"
+              : "Click on the image to access your saved website and add any notes you`d like"
+          }
         />
 
         <StyledSection>
