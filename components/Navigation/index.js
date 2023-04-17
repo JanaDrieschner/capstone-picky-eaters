@@ -58,7 +58,6 @@ const StyledLink = styled(Link)`
   font-size: 30px;
   padding: 10px 20px;
   color: #0f5c64;
-
   &.selected {
     color: #c35e64;
   }
