@@ -3,7 +3,7 @@ import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import { IoIosAddCircleOutline } from "react-icons/io";
+
 import { useRouter } from "next/router";
 import Notes from "../Notes";
 import { BsArrowLeftCircle } from "react-icons/bs";
@@ -111,10 +111,8 @@ const StyledArticle = styled.article`
 
 const StyledImage = styled(Image)`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
   border: 2px ridge black;
   width: 100%;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -126,27 +124,16 @@ const StyledSection = styled.section`
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-
   color: #0f5c64;
 `;
 
 const StyledButton = styled.button`
   background-color: transparent;
   text-decoration: none;
-
   color: #0f5c64;
   border: none;
   font-size: 30px;
-
   z-index: 1;
-`;
-
-const StyledWrapper = styled.div`
-  background-color: 
-  font-size: 45;
-  color: #0f5c64;
-
-
 `;
 
 const StyledSelect = styled.select`
