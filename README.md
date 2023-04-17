@@ -33,7 +33,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Demo
 
-You can find the hosted version here: [Picky Eaters] (https://picky-eaters.vercel.app)
+You can find the hosted version here: [Picky Eaters](https://picky-eaters.vercel.app)
 
 
 
