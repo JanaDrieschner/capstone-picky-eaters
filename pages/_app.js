@@ -9,6 +9,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <link rel="icon" href="/dish.png" />
+      </Head>
       <GlobalStyle />
       <Heading />
 
